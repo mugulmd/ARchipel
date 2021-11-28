@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="marker_astronaut" size="0.115000 0.066639" />
+    <ImageTarget name="marker_oxygen" size="0.115000 0.066664" />
     <ImageTarget name="ironoxide" size="0.300000 0.212110" />
   </Tracking>
 </QCARConfig>
