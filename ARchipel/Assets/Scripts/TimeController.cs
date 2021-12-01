@@ -59,6 +59,7 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    // Event system
     public event Action onDayStart;
     void DayStart()
     {
@@ -67,7 +68,6 @@ public class TimeController : MonoBehaviour
             onDayStart();
         }
     }
-
     public event Action onNightStart;
     void NightStart()
     {
@@ -77,9 +77,31 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    // Basic display on top-left of the application screen
     void OnGUI()
     {
         String labelText = "Day: " + day + ", hour: " + hour + ", " + state.ToString();
-        GUI.Label(new Rect(20, 10, 200, 50), labelText);
+
+        GUILayout.BeginArea(new Rect(20, 20, 200, 20));
+        GUILayout.Label(labelText);
+        GUILayout.EndArea();
+    }
+
+    // Getters
+    public float GetTime()
+    {
+        return time;
+    }
+    public int GetDay()
+    {
+        return day;
+    }
+    public int GetHour()
+    {
+        return hour;
+    }
+    public DayState GetDayState()
+    {
+        return state;
     }
 }
