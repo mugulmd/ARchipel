@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="bridge_right_2" size="0.094000 0.119907" />
+    <ImageTarget name="bridge_right_1" size="0.107000 0.165039" />
+    <ImageTarget name="bridge_left_2" size="0.903000 1.137998" />
+    <ImageTarget name="bridge_left_1" size="0.101000 0.147445" />
+    <ImageTarget name="mushroom_1" size="0.094000 0.109667" />
+    <ImageTarget name="frog_2" size="0.154000 0.052718" />
+    <ImageTarget name="frog_1" size="0.154000 0.061119" />
+  </Tracking>
+</QCARConfig>

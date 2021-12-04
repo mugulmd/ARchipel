@@ -2,10 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlippingIsland : MonoBehaviour
+public class FlippingIsland : GameElement
 {
-    [SerializeField]
     private Animator animator_ctrl;
+
+    protected override void Init()
+    {
+        base.Init();
+        animator_ctrl = GetComponent<Animator>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Init();
+    }
 
     void Flip()
     {
@@ -14,14 +25,12 @@ public class FlippingIsland : MonoBehaviour
 
     void OnEnable()
     {
-        TimeController time_ctrl = GameObject.Find("Game Manager").GetComponent<TimeController>();
         time_ctrl.onDayStart += Flip;
         time_ctrl.onNightStart += Flip;
     }
 
     void OnDisable()
     {
-        TimeController time_ctrl = GameObject.Find("Game Manager").GetComponent<TimeController>();
         time_ctrl.onDayStart -= Flip;
         time_ctrl.onNightStart -= Flip;
     }
