@@ -1,0 +1,245 @@
+# File format:
+# lines start with '#' is comment
+# lines start with @ indicate a conversation snippets
+# lines start with [NAME] indicate which character says the conversation
+# empty line should be ignored.
+# some character has multilines of 
+
+@ Estelle_Rorie_0
+[Rorie] Hello, do you know how to let the floating island float again…?
+	My island fell to the ground... and...
+[Estelle] Oh, poor girl, an ancient floating island? 
+	Could you take me there? 
+	I need to investigate first.
+
+@ Estelle_Rorie_1
+[Estelle] Emm... 
+	The floating island exhaust the mana, and fell down 
+	If we can find where can I input mana for the island,
+	The island will float again...
+[Rorie] Sorry... but I know nothing about that,
+	the island just fell off several days ago.
+
+@ Estelle_Rorie_2
+[Estelle] Wait, the emerald is shining…
+[Rorie]  Something wrong?
+[Estelle] No, the emerald has some reactions to the island!
+	It may indicate something
+
+@ Estelle_Rorie_3
+[Estelle] Oh, something is hidden here
+[Rorie]  But I cannot see anything
+[Estelle] Wait a minute….
+	....
+	........
+
+@ Estelle_Rorie_4
+[Estelle] Okay, it is an altar
+[Rorie]  I think we should put the emerald on it
+[Estelle] maybe… I think you should return to the floating island
+[Rorie]  You mean you found a solution?
+[Estelle] Yeah, but I would like to research this altar for a bit
+	I have never seen such wonderful magical things.
+	The altar supports the floating island.
+
+@ Estelle_Rorie_5
+[Estelle] well....done! fantasitic ancient altars, 
+	it deserves.
+	Maybe I can model after that, to create my own island...
+	Emmm...
+	Still need lots of resources... god
+
+@ Estelle_Cecil_0
+[Cecil]  Hello?
+[Estelle] (Err… an intelligent mushroom?) 
+	Hi, tiny fungus, you seem not feeling well… almost dehydrated?
+	Do you want some water?
+[Cecil]  No, no way, I am allergic to water.
+	Also do not call me in that way, you the ugly witch.
+[Estelle] allergic to water?
+	Sounds interesting...
+	I never heard of such things.
+	Maybe I can help you cue it, it seems an interesting subject...
+[Cecil]  Would it be possible? 
+	I’ve struggled with this for many years!
+[Estelle] I’m confident about that… but…. 
+	well, it’s not free, you know, the cost
+[Cecil]  Err…. How about some gold, 
+	you are a talented magician right?
+[Estelle] Oh, gold is okay, 
+	but you have to show it to me before the curation.
+[Cecil]  So troublesome...
+	I store it on the rainforest island, 
+	You can go with me, if you want.
+#(They go to the fungus island, on the way to gold)
+
+@ Estelle_Cecil_1
+[Estelle] … I seldom been this before,
+	There are lots of mana, it endows your intelligence right?
+[Cecil]  No, in this forest it seems natural to have intelligence.
+
+@ Estelle_Cecil_2
+[Cecil]  Here, this is some of my treasure, is it adequate?
+
+@ Estelle_Cecil_3
+#If Cecil has a special emerald)
+[Estelle] ...I think that emerald is more attractive to me.
+	You didn’t need this right, as a merchant?
+[Cecil]  That emerald? Oh… okay,
+
+@ Estelle_Cecil_4
+#Otherwise:
+[Estelle] some of this is adequate, 
+	Just take your golds to my house, I will give your curation if you want
+
+@ Estelle_Cecil_5
+#(If Cecil goes to Estelle’s house..)
+[Cecil]  Hello?
+[Estelle] Oh, you are that mushroom right?
+[Cecil]  call me Cecil.
+[Estelle] Ok, ok, Mr Cecil, shall we start checking?
+[Cecil]  of course.
+
+@ Estelle_Cecil_5
+#(After a period of time)
+[Estelle] Are you really allergic to the water?
+[Cecil] .... Maybe, someone told me that.
+[Estelle] I think you can contact with water, 
+	They must have mistaken something.
+	your body and mana is designed for living in the water
+[Cecil]  Err...god but I think it will kill me, I cannot risk this
+[Estelle] You can do that, tiny mushroom :)
+#(If Cecil wants to resolve the issue, it still need to be brave, or some accidents might help him remind the experience with Estelle)
+
+
+
+@ Estelle_Kokko_0
+[Kokko]  Hello, have you ever seen other frogs?
+[Estelle] frogs?... But, sorry, you are the first frog I’ve seen
+[Kokko]  Oh god…
+[Estelle] Have you lost your friends?
+[Kokko]  No, I lost my family years ago, I have searched for them for a long time…
+[Estelle] That was a sad story…
+	The map seemed interesting, could you show me it?
+[Kokko]  Fine, 
+#(Estelle copy the map)
+[Estelle] Wow,
+[Kokko]  I have explored many islands to draw this map, I have put lots of effort in it.
+
+@ Cecil_Kokko_0
+[Cecil]  What are you doing here, you stupid green ball? 
+	Who do you think you are... 
+	coming here as if it’s your home... 
+	destroying my beach with your ugly shipwreck trash?
+[Kokko]  Excuse me, excuse me, mister. 
+	I didn’t want to bother you at all. 
+	I am searching for my family, 
+	do you happen to have seen any other frogs around your land? 
+[Cecil]  Eeeeh, no and thank god! 
+	You don’t seem like the best company around. 
+	Look what, my son, I don’t give information for free. 
+	What are you willing to pay to know more about your ugly friends?
+[Kokko]  Eeeh, pay? 
+	I only have my boat and maps and a few jars with insects as a meal. 
+[Cecil]  Ok, ok, you’re not just ugly, but also poor. 
+	I’ll take the insects. 
+	Long story short - 
+	go west from here, 
+	across the floating island and then turn left. 
+	All clear? 
+	Yes, of course. 
+	Now give me those insects!
+[Kokko]  
+	Oh, ok, let me get those for you.  
+	But… Wait, what do you mean by a floating island?
+
+[Cecil]  Ah, you’ll see it when you pass by. 
+	No more questions, ok? 
+
+@ Cecil_Kokko_1
+[Cecil]  Let’s goooooooo! 
+	It’s time to rule the world! 
+	Get over here, you useless amphibia! 
+	Start that shipwreck immediately and let’s go!
+
+@ Rorie_Cecil_2
+[Cecil]  Khem… khem… 
+	What are you looking at, young lady? 
+	You seem very interested in the flowers of my island… 
+	Don’t you think it would be more proper to introduce yourself, 
+	before invading my space like this?
+[Rorie]  Heh? 
+	What is going on? 
+	Excuse me, but 
+	where are you, 
+	I don’t see you. 
+[Cecil]  Well right in front of you, 
+	why don’t you try looking at your feet a bit more often, 
+	you might be missing a whole show. 
+[Rorie]  Oh, oh, hello little shroom… 
+	What is your name? 
+	I am Rorie from the floating island.
+[Cecil]  Little shroom? 
+	Little shroom… 
+	how about Cecil 
+	The Great, ruler 
+	of the tropical islands??? 
+	I’d think more before speaking, if I was in your place. 
+[Rorie]  Excuse me, Cecil The Great. 
+	May I ask you for your help. 
+	Have you, 
+	by any chance, 
+	heard of the magical shrooms that grow on this island? 
+[Cecil]  E-excuse me… 
+	magic shrooms… 
+	What, what are you talking about? 
+	I.. 
+	I think you’re on the wrong island –
+	...
+	... 
+	#(Cecil started stuttering.)
+	Get out of this place, right now! 
+	You’re not welcome here! 
+	Leaveeee!
+
+@ Rorie_Kokko_0
+[Kokko]  Hey! 
+	Hey you, 
+	can you hear me? 
+	Hey...
+	where am I...??
+	can you tell me what this place is?
+#Rorie slid in Kokko’s direction and looked at him astounded.
+[Rorie]  Hello and welcome on the floating island. 
+	I am Rorie, nice to meet you. 
+	What are you seeking here?
+[Kokko]  Hi, I am Kokko and I am searching for my family. 
+	I lost them years ago, have you maybe seen any frogs around? 
+[Rorie]  Oh, well… 
+	we did have some frogs inhibiting our island. 
+	I could show you some paintings of our frog colony, if you’d like. 
+	Maybe you haven’t heard yet, but… there was a catastrophe on our island. 
+	A few days ago it fell down on the ground. 
+	We used to levitate above the ground, living a peaceful and beautiful life. 
+	Ever since this catastrophe took place, we haven’t seen our frogs.  
+	We’ve searched for them all over the island, but there is no trace of them. 
+	And we are so weak, we’ve lost our vitality. 
+	I need to help my island, 
+	I need to bring back everything back to normal. 
+	But anyways, would you like to see my paintings?
+[Kokko]  Yes! Yes! Of course, please show me!
+
+@ Rorie_Kokko_1
+[Kokko]  Rorie, let’s go together! 
+	Let’s take this boat and let’s find how to bring back your vitality 
+	and find my family! 
+	We can help each other, 
+		what do you think?
+[Rorie]  Hmm… 
+	maybe you’re right… 
+	we are both seeking, 
+	we both need to fix this all. 
+	Let’s try it, 
+	I think I know where we might start. 
+	Let’s go to the altar island and dig into this mystery.
+
