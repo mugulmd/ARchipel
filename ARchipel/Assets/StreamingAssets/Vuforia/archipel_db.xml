@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="floating_island" size="0.091000 0.071373" />
+    <ImageTarget name="enchanted" size="0.091000 0.079843" />
+    <ImageTarget name="boat" size="0.091000 0.070359" />
     <ImageTarget name="bridge_right_2" size="0.094000 0.119907" />
     <ImageTarget name="bridge_right_1" size="0.107000 0.165039" />
     <ImageTarget name="bridge_left_2" size="0.903000 1.137998" />
