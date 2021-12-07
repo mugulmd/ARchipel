@@ -40,6 +40,7 @@ public class BoatController : GameElement
     public void SailTo(GameObject obj)
     {
         state = State.Busy;
+        transform.parent = null;
         destination = obj;
     }
 
