@@ -2,47 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BridgeController : MonoBehaviour
+public class BridgeController : GameElement
 {
     private LineRenderer lr;
 
-    private bool found_start;
-    private bool found_end;
-
-    private Vector3 start;
-    private Vector3 end;
+    private GameObject marker_left, marker_right;
+    private GameObject island_left, island_right;
 
     void Start()
     {
+        Init();
+
         lr = GetComponent<LineRenderer>();
         lr.enabled = false;
 
-        found_start = false;
-        found_end = false;
+        marker_left = null;
+        marker_right = null;
+        island_left = null;
+        island_right = null;
     }
 
-    public void FoundStart()
+    public void FoundLeft(GameObject marker)
     {
-        found_start = true;
-        if (found_end)
-            lr.enabled = true;
+        marker_left = marker;
+        Debug.Log("Detected left endpoint");
     }
 
-    public void FoundEnd()
+    public void FoundRight(GameObject marker)
     {
-        found_end = true;
-        if(found_start)
-        {
-            lr.enabled = true;
-        }
+        marker_right = marker;
+        Debug.Log("Detected right endpoint");
     }
 
     void Update()
     {
-        start = GameObject.Find("Island_1").transform.position;
-        end = GameObject.Find("Island_2").transform.position;
+        if (marker_left == null || marker_right == null)
+            return;
 
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
+        if (island_left == null)
+        {
+            GameObject[] islands = GameObject.FindGameObjectsWithTag("Island");
+            foreach (GameObject island in islands)
+            {
+                if (Vector3.Distance(marker_left.transform.position, island.transform.position) < 0.1F)
+                {
+                    island_left = island;
+                    Debug.Log("Detected left island");
+                }
+            }
+        }
+        if (island_right == null)
+        {
+            GameObject[] islands = GameObject.FindGameObjectsWithTag("Island");
+            foreach (GameObject island in islands)
+            {
+                if (Vector3.Distance(marker_right.transform.position, island.transform.position) < 0.1F)
+                {
+                    island_right = island;
+                    Debug.Log("Detected right island");
+                }
+            }
+        }
+
+        if (island_left == null || island_right == null)
+            return;
+
+        lr.enabled = true;
+        lr.SetPosition(0, island_left.transform.position);
+        lr.SetPosition(1, island_right.transform.position);
     }
 }
