@@ -41,26 +41,12 @@ public class StoryLog : MonoBehaviour
     }
 
     // Automatic messages
-    void SayHello()
+    public void SayHello()
     {
         AddMessage("Good morning everyone !");
     }
-    void SayBye()
+    public void SayBye()
     {
         AddMessage("Good night, see you tomorrow...");
-    }
-
-    void OnEnable()
-    {
-        TimeController time_ctrl = GetComponent<TimeController>();
-        time_ctrl.onDayStart += SayHello;
-        time_ctrl.onNightStart += SayBye;
-    }
-
-    void OnDisable()
-    {
-        TimeController time_ctrl = GetComponent<TimeController>();
-        time_ctrl.onDayStart -= SayHello;
-        time_ctrl.onNightStart -= SayBye;
     }
 }

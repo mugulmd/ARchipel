@@ -459,7 +459,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 442dc17217688b647991effb690c5415, type: 3}
   m_PrefabInstance: {fileID: 642242946}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &707197477
+--- !u!21 &867054904
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'mushroom_1Material
 
-    26660'
+    18508'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -488,16 +488,16 @@ Material:
     m_Colors:
     - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
   m_BuildTextureStacks: []
---- !u!21 &767783939
+--- !u!21 &896848945
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 'frog_2Material
+  m_Name: 'boatMaterial
 
-    26674'
+    18486'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -510,7 +510,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ab3995043e464907acca3bc7678c8e70, type: 3}
+        m_Texture: {fileID: 2800000, guid: 684fb3d3810144af80865cfce60c3c38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -542,8 +542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913670763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013, y: 0.1073, z: -0.011300027}
-  m_LocalScale: {x: 0.0062343, y: 0.0062343, z: 0.0062343}
+  m_LocalPosition: {x: -0.0213, y: 0.1035, z: 0.0016}
+  m_LocalScale: {x: 0.007597679, y: 0.007597679, z: 0.007597679}
   m_Children:
   - {fileID: 1250741472}
   m_Father: {fileID: 1255705098}
@@ -771,8 +771,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104007673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0019345998, y: 0.1243, z: -0.015778}
-  m_LocalScale: {x: 0.12848693, y: 0.12848693, z: 0.12848693}
+  m_LocalPosition: {x: 0.001632, y: 0.1251, z: -0.01331}
+  m_LocalScale: {x: 0.2647987, y: 0.2647987, z: 0.2647987}
   m_Children:
   - {fileID: 212096092}
   m_Father: {fileID: 1279094899}
@@ -815,7 +815,7 @@ Transform:
   m_GameObject: {fileID: 1136972120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.004423465, y: 0.004423465, z: 0.004423465}
+  m_LocalScale: {x: 0.0028721117, y: 0.0028721117, z: 0.0028721117}
   m_Children:
   - {fileID: 642242947}
   m_Father: {fileID: 1255705098}
@@ -869,7 +869,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1398812480}
+  - {fileID: 896848945}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -951,7 +951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181484988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 264995107}
@@ -1075,6 +1075,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 0b8e59d3be9956c4da74701ae1064262, type: 2}
+    - target: {fileID: 11100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 0b8e59d3be9956c4da74701ae1064262, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a1e47d0d282414481a0b2a67c79333, type: 3}
 --- !u!4 &1250741472 stripped
@@ -1130,7 +1142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 707197477}
+  - {fileID: 867054904}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1212,7 +1224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255705092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136972121}
@@ -1268,7 +1280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 767783939}
+  - {fileID: 1366961222}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1350,7 +1362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279094893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.528, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1681699173}
@@ -1358,16 +1370,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1398812480
+--- !u!21 &1366961222
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 'boatMaterial
+  m_Name: 'frog_2Material
 
-    -144480'
+    18522'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1380,7 +1392,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 684fb3d3810144af80865cfce60c3c38, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab3995043e464907acca3bc7678c8e70, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -1522,6 +1534,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3aee2805227b2d4aa13b41dd6c371bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DayStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1663516775}
+        m_TargetAssemblyTypeName: StoryLog, Assembly-CSharp
+        m_MethodName: SayHello
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1104007675}
+        m_TargetAssemblyTypeName: KokkoLife, Assembly-CSharp
+        m_MethodName: WakeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 913670765}
+        m_TargetAssemblyTypeName: CecilLife, Assembly-CSharp
+        m_MethodName: WakeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NightStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1663516775}
+        m_TargetAssemblyTypeName: StoryLog, Assembly-CSharp
+        m_MethodName: SayBye
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1104007675}
+        m_TargetAssemblyTypeName: KokkoLife, Assembly-CSharp
+        m_MethodName: GoToSleep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 913670765}
+        m_TargetAssemblyTypeName: CecilLife, Assembly-CSharp
+        m_MethodName: GoToSleep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1663516777
 Transform:
   m_ObjectHideFlags: 0

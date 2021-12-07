@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TimeController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class TimeController : MonoBehaviour
     private int hour;
     private DayState state;
 
+    // Event system
+    public UnityEvent DayStart;
+    public UnityEvent NightStart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,14 @@ public class TimeController : MonoBehaviour
         time = 0;
         day = 0;
         state = DayState.Night;
+        if (DayStart == null)
+        {
+            DayStart = new UnityEvent();
+        }
+        if (NightStart == null)
+        {
+            NightStart = new UnityEvent();
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +55,7 @@ public class TimeController : MonoBehaviour
         if(state == DayState.Night && hour >= 7 && hour < 21)
         {
             state = DayState.Morning;
-            DayStart();
+            DayStart.Invoke();
         }
         else if(state == DayState.Morning && hour >= 12)
         {
@@ -55,25 +68,7 @@ public class TimeController : MonoBehaviour
         else if(state == DayState.Evening && hour >= 21)
         {
             state = DayState.Night;
-            NightStart();
-        }
-    }
-
-    // Event system
-    public event Action onDayStart;
-    void DayStart()
-    {
-        if(onDayStart != null)
-        {
-            onDayStart();
-        }
-    }
-    public event Action onNightStart;
-    void NightStart()
-    {
-        if(onNightStart != null)
-        {
-            onNightStart();
+            NightStart.Invoke();
         }
     }
 

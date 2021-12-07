@@ -22,16 +22,4 @@ public class FlippingIsland : GameElement
     {
         animator_ctrl.SetTrigger("playFlip");
     }
-
-    void OnEnable()
-    {
-        time_ctrl.onDayStart += Flip;
-        time_ctrl.onNightStart += Flip;
-    }
-
-    void OnDisable()
-    {
-        time_ctrl.onDayStart -= Flip;
-        time_ctrl.onNightStart -= Flip;
-    }
 }

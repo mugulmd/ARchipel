@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CecilLife : MonoBehaviour
+public class CecilLife : CharacterElement
 {
-    // Start is called before the first frame update
+    private Animation animation;
+
     void Start()
     {
-        
+        Init();
+        SetSupport("Island Cecil");
+        animation = transform.GetChild(0).gameObject.GetComponent<Animation>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void WakeUp()
     {
-        
+        animation.Play("Idle");
+    }
+    public void GoToSleep()
+    {
+        animation.Stop();
     }
 }
