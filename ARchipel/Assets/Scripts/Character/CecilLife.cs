@@ -9,7 +9,7 @@ public class CecilLife : CharacterElement
     void Start()
     {
         Init();
-        SetSupport("Island Cecil");
+        SetSupport(GameObject.Find("Island Cecil"));
         animation = transform.GetChild(0).gameObject.GetComponent<Animation>();
     }
 

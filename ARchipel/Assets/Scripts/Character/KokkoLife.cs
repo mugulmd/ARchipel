@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KokkoLife : CharacterElement
 {
-    public enum Activity { 
-        Sleep, Idle, Sail
-    };
+    public enum Activity { Sleep, Idle, Sail };
+
+    [HideInInspector]
     private Activity activity;
 
     private Animator animator;
@@ -14,9 +14,8 @@ public class KokkoLife : CharacterElement
     void Start()
     {
         Init();
-        SetSupport("Island Kokko");
-        if (time_ctrl.GetDayState() == TimeController.DayState.Night) GoToSleep();
-        else WakeUp();
+        SetSupport(GameObject.Find("Island Kokko"));
+        activity = Activity.Sleep;
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
     }
 
@@ -30,13 +29,30 @@ public class KokkoLife : CharacterElement
         activity = Activity.Sleep;
         animator.SetBool("isAwake", false);
     }
-    public void GoToBoat()
+    public void OnBoatReachIsland()
     {
-        if (activity == Activity.Idle && boat.GetComponent<BoatController>().GetIsland() == support)
+        if (activity == Activity.Idle && game_data.boat_ctrl.island == support)
         {
-            transform.position = boat.transform.position;
-            SetSupport("Boat");
+            transform.position = game_data.boat.transform.position;
+            SetSupport(game_data.boat);
             activity = Activity.Sail;
+
+            GameObject[] islands = GameObject.FindGameObjectsWithTag("Island");
+            GameObject dest = null;
+            foreach (GameObject obj in islands)
+            {
+                if (obj != support)
+                {
+                    dest = obj;
+                    break;
+                }
+            }
+            game_data.boat_ctrl.SailTo(dest);
+        }
+        else if (activity == Activity.Sail)
+        {
+            SetSupport(game_data.boat_ctrl.island);
+            activity = Activity.Idle;
         }
     }
-}
+} 

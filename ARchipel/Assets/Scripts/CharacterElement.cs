@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class CharacterElement : GameElement
 {
-    protected GameObject support;
+    [HideInInspector]
+    public GameObject support;
 
-    protected void SetSupport(string go_name)
+    protected void SetSupport(GameObject obj)
     {
-        support = GameObject.Find(go_name);
+        support = obj;
         transform.parent = support.transform;
     }
 }
