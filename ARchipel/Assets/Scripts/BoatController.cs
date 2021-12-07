@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BoatController : GameElement
 {
     private GameObject island;
+
+    public UnityEvent ReachedIsland;
     
     void Start()
     {
         Init();
         island = null;
+        if (ReachedIsland == null)
+        {
+            ReachedIsland = new UnityEvent();
+        }
     }
 
     void Update()
@@ -22,7 +29,8 @@ public class BoatController : GameElement
                 if (Vector3.Distance(transform.position, obj.transform.position) < 0.1F)
                 {
                     island = obj;
-                    story_log.AddMessage("The boat now belongs to " + island.name + ".");
+                    story_log.AddMessage("The boat reached " + island.name + ".");
+                    ReachedIsland.Invoke();
                     break;
                 }
             }
@@ -31,9 +39,14 @@ public class BoatController : GameElement
         {
             if (Vector3.Distance(transform.position, island.transform.position) > 0.15F)
             {
-                story_log.AddMessage("The boat on " + island.name + " is now vacant.");
+                story_log.AddMessage("The boat is somewhere on the water.");
                 island = null;
             }
         }
+    }
+
+    public GameObject GetIsland()
+    {
+        return island;
     }
 }
