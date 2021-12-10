@@ -12,9 +12,8 @@ public class CecilLife : CharacterElement
         animation = transform.GetChild(0).gameObject.GetComponent<Animation>();
         animation.Play("Idle");
 
-        // TODO : improve code using game_data
         IslandElement island = GameObject.Find("Island Cecil").GetComponent<IslandElement>();
-        Transform spot = island.spots[0];
-        SetSupport(island, spot);
+        int spot_idx = island.AssignSpotIdx();
+        SetGround(island, spot_idx);
     }
 }

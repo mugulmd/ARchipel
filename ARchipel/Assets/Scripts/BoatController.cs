@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BoatController : GameElement
+public class BoatController : PlatformElement
 {
-    [HideInInspector]
-    public bool has_passenger;
-    [HideInInspector]
-    public List<CharacterElement> passengers;
-
     [HideInInspector]
     public bool at_dock;
     [HideInInspector]
@@ -22,15 +17,13 @@ public class BoatController : GameElement
     public State state;
 
     private IslandElement destination;
-    public float speed;
+    private float speed;
 
     public UnityEvent ReachedIsland;
 
     void Start()
     {
         Init("Target Boat");
-        has_passenger = false;
-        passengers = new List<CharacterElement>();
         at_dock = false;
         island = null;
         port_idx = -1;
@@ -48,40 +41,108 @@ public class BoatController : GameElement
         if (state == State.Adrift)
         {
             // if at dock
-            // check if still close enough to port
-            // if not, check also if close enough to another port of same island
-
+            // check if still close enough to island marker
             // if not at dock
-            // try to detect an island by searching through ports
+            // try to detect an island by searching through their marker
             // if hit detected
             // update data and trigger reached island event
+            if (at_dock)
+            {
+                if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.15F)
+                {
+                    at_dock = false;
+                    island = null;
+                    port_idx = -1;
+                }
+            } else
+            {
+                foreach (IslandElement elt in game_data.islands)
+                {
+                    if (Vector3.Distance(marker.transform.position, elt.marker.transform.position) < 0.1F)
+                    {
+                        at_dock = true;
+                        island = elt;
+                        float min_dist = 100.0F;
+                        for (int i = 0; i < island.ports.Length; i++)
+                        {
+                            float dist = Vector3.Distance(transform.position, island.ports[i].position);
+                            if (dist < min_dist)
+                            {
+                                min_dist = dist;
+                                port_idx = i;
+                            }
+                        }
+                        ReachedIsland.Invoke();
+                        break;
+                    }
+                }
+            }
         }
         else if (state == State.OnTrip)
         {
             // move towards destination
-
             // if close enough to one of destination island's ports
             // update data and trigger reached island event
+            float min_dist = 100.0F;
+            int closest_port_idx = -1;
+            for (int i = 0; i < destination.ports.Length; i++)
+            {
+                Transform port = destination.ports[i];
+                float dist = Vector3.Distance(transform.position, port.position);
+                if (dist < min_dist)
+                {
+                    min_dist = dist;
+                    closest_port_idx = i;
+                }
+            }
+            if (min_dist < 0.01F)
+            {
+                at_dock = true;
+                island = destination;
+                port_idx = closest_port_idx;
+                ReachedIsland.Invoke();
+            }
+            else if (closest_port_idx >= 0)
+            {
+                Vector3 dir = (destination.ports[closest_port_idx].position - transform.position).normalized;
+                transform.position += dir * speed * Time.deltaTime;
+            }
         }
     }
 
-    public void WaitForPassenger(CharacterElement elt)
+    public void WaitForPassengers()
     {
-        // TODO
+        state = State.PreparingTrip;
+        transform.SetParent(island.ports[port_idx]);
     }
-
-    public void TakePassenger(CharacterElement elt)
-    {
-        // TODO
-    }
-
     public void SailTo(IslandElement elt)
     {
-        // TODO
+        transform.SetParent(null);
+        destination = elt;
+        at_dock = false;
+        island = null;
+        port_idx = -1;
+        state = State.OnTrip;
     }
-
+    public void OnReachedIsland()
+    {
+        if (state == State.OnTrip)
+        {
+            destination = null;
+            state = State.EndingTrip;
+            ReleasePassengers();
+        }
+    }
     public void ReleasePassengers()
     {
-        // TODO
+        while (passengers.Count > 0)
+        {
+            CharacterElement elt = passengers[0];
+            int spot_idx = island.AssignSpotIdx();
+            ReleasePassenger(elt);
+            island.TakePassenger(elt);
+            elt.WalkTo(island, spot_idx);
+        }
+        state = State.Adrift;
     }
 }
