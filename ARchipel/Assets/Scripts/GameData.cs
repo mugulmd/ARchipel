@@ -17,7 +17,10 @@ public class GameData : MonoBehaviour
     public BoatController boat_ctrl;
 
     [HideInInspector]
-    public Dictionary<string, GameObject> markers;
+    public List<IslandElement> islands;
+
+    [HideInInspector]
+    public List<CharacterElement> characters;
 
     void Start()
     {
@@ -25,9 +28,7 @@ public class GameData : MonoBehaviour
         story_log = GetComponent<StoryLog>();
         boat = GameObject.Find("Boat");
         boat_ctrl = boat.GetComponent<BoatController>();
-        markers = new Dictionary<string, GameObject>();
-        markers.Add("Kokko", GameObject.Find("Target Kokko"));
-        markers.Add("Cecil", GameObject.Find("Target Cecil"));
-        markers.Add("Boat", GameObject.Find("Target Boat"));
+        // init islands
+        // init characters
     }
 }

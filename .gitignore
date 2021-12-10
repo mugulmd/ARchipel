@@ -60,4 +60,5 @@ crashlytics-build.properties
 
 # Vuforia engine
 com.ptc.vuforia.engine-10.3.2.tgz
+com.ptc.vuforia.engine-10.3.2.tgz.meta
 

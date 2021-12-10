@@ -8,17 +8,13 @@ public class CecilLife : CharacterElement
 
     void Start()
     {
-        Init();
-        SetSupport(GameObject.Find("Island Cecil"));
+        Init("Target Cecil");
         animation = transform.GetChild(0).gameObject.GetComponent<Animation>();
-    }
-
-    public void WakeUp()
-    {
         animation.Play("Idle");
-    }
-    public void GoToSleep()
-    {
-        animation.Stop();
+
+        // TODO : improve code using game_data
+        IslandElement island = GameObject.Find("Island Cecil").GetComponent<IslandElement>();
+        Transform spot = island.spots[0];
+        SetSupport(island, spot);
     }
 }

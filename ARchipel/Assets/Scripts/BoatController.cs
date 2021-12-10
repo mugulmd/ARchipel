@@ -5,83 +5,83 @@ using UnityEngine.Events;
 
 public class BoatController : GameElement
 {
-    public enum State { Free, Busy };
+    [HideInInspector]
+    public bool has_passenger;
+    [HideInInspector]
+    public List<CharacterElement> passengers;
 
+    [HideInInspector]
+    public bool at_dock;
+    [HideInInspector]
+    public IslandElement island;
+    [HideInInspector]
+    public int port_idx;
+
+    public enum State { Adrift, PreparingTrip, OnTrip, EndingTrip };
     [HideInInspector]
     public State state;
 
-    [HideInInspector]
-    public GameObject island;
+    private IslandElement destination;
+    public float speed;
 
     public UnityEvent ReachedIsland;
 
-    private GameObject destination;
-    private float speed;
-    
     void Start()
     {
-        Init();
-        state = State.Free;
+        Init("Target Boat");
+        has_passenger = false;
+        passengers = new List<CharacterElement>();
+        at_dock = false;
         island = null;
+        port_idx = -1;
+        state = State.Adrift;
+        destination = null;
+        speed = 0.05F;
         if (ReachedIsland == null)
         {
             ReachedIsland = new UnityEvent();
         }
-        destination = null;
-        speed = 0.05F;
     }
 
     void Update()
     {
-        if (state == State.Free) UpdateFree();
-        else UpdateBusy();
-    }
-
-    public void SailTo(GameObject obj)
-    {
-        state = State.Busy;
-        transform.parent = null;
-        destination = obj;
-    }
-
-    void UpdateFree()
-    {
-        if (island == null)
+        if (state == State.Adrift)
         {
-            GameObject[] islands = GameObject.FindGameObjectsWithTag("Island");
-            foreach (GameObject obj in islands)
-            {
-                if (Vector3.Distance(transform.position, obj.transform.position) < 0.1F)
-                {
-                    island = obj;
-                    game_data.story_log.AddMessage("The boat reached " + island.name + ".");
-                    ReachedIsland.Invoke();
-                    break;
-                }
-            }
+            // if at dock
+            // check if still close enough to port
+            // if not, check also if close enough to another port of same island
+
+            // if not at dock
+            // try to detect an island by searching through ports
+            // if hit detected
+            // update data and trigger reached island event
         }
-        else
+        else if (state == State.OnTrip)
         {
-            if (Vector3.Distance(transform.position, island.transform.position) > 0.15F)
-            {
-                game_data.story_log.AddMessage("The boat is somewhere on the water.");
-                island = null;
-            }
+            // move towards destination
+
+            // if close enough to one of destination island's ports
+            // update data and trigger reached island event
         }
     }
 
-    void UpdateBusy()
+    public void WaitForPassenger(CharacterElement elt)
     {
-        if (Vector3.Distance(transform.position, destination.transform.position) < 0.1F)
-        {
-            ReachedIsland.Invoke();
-            state = State.Free;
-            island = destination;
-            destination = null;
-        } else
-        {
-            Vector3 dir = (destination.transform.position - transform.position).normalized;
-            transform.position += dir * speed * Time.deltaTime;
-        }
+        // TODO
+    }
+
+    public void TakePassenger(CharacterElement elt)
+    {
+        // TODO
+    }
+
+    public void SailTo(IslandElement elt)
+    {
+        // TODO
+    }
+
+    public void ReleasePassengers()
+    {
+        // TODO
     }
 }
