@@ -6,8 +6,27 @@ using UnityEngine.Events;
 public abstract class CharacterElement : GameElement
 {
     public enum Activity { Sleep, Idle, Walk, Talk, Sail };
-    [HideInInspector]
-    public Activity activity;
+
+    protected Activity activity_;
+
+    
+    public Activity activity
+    {
+        get
+        {
+            return activity_;
+        }
+        set
+        {
+            if (activity_ != value)
+            {
+                Activity oldActivity_ = activity_;
+                activity_ = value;
+                this.OnStateChange(oldActivity_, activity_);
+                StateChanged.Invoke(oldActivity_, activity_);
+            }
+        }
+    }
 
     //[HideInInspector]
     public PlatformElement ground;
@@ -22,10 +41,17 @@ public abstract class CharacterElement : GameElement
     protected float speed;
 
     public UnityEvent ReachedPlatform;
+    public UnityEvent<Activity,Activity> StateChanged; // <old State, current state>.
+
+    public DialogBubble dialogBubble;
 
     public virtual void Init(string target_name)
     {
         base.Init(target_name);
+        if (dialogBubble == null)
+        {
+            this.dialogBubble = gameObject.GetComponent<DialogBubble>();
+        }
         activity = Activity.Idle;
         speed = 0.05F;
         if (ReachedPlatform == null)
@@ -47,5 +73,58 @@ public abstract class CharacterElement : GameElement
         destination = elt;
         dest_spot_idx = spot_idx;
         activity = Activity.Walk;
+    }
+
+    public virtual void OnStateChange(Activity oldState, Activity newState)
+    {
+        // implement in the sub-class, to process different activities.
+        switch (newState)
+        {
+            case Activity.Sleep:
+                OnSleep(oldState);
+                break;
+            case Activity.Sail:
+                OnSail(oldState);
+                break;
+            case Activity.Idle:
+                OnIdle(oldState);
+                break;
+            case Activity.Talk:
+                OnTalk(oldState);
+                break;
+            case Activity.Walk:
+                OnWalk(oldState);
+                break;
+        }
+    }
+
+    public virtual void OnSleep(Activity oldState)
+    {
+
+    }
+
+    public virtual void OnSail(Activity oldState)
+    {
+
+    }
+
+    public virtual void OnIdle(Activity oldState)
+    {
+
+    }
+
+    public virtual void OnTalk(Activity oldState)
+    {
+
+    }
+
+    public virtual void OnWalk(Activity oldState)
+    {
+
+    }
+
+    public void Say(string s)
+    {
+        this.dialogBubble.DisplayText(s);
     }
 }

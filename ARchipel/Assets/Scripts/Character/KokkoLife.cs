@@ -16,6 +16,8 @@ public class KokkoLife : CharacterElement
         int spot_idx = ground.AssignSpotIdx();
         ground.TakePassenger(this);
         SetGround(ground, spot_idx);
+
+        Say("Finding...");
     }
 
     void Update()
@@ -77,5 +79,15 @@ public class KokkoLife : CharacterElement
             }
             game_data.boat_ctrl.SailTo(dest_island);
         }
+    }
+
+    public virtual void OnSail(Activity oldState)
+    {
+        Say("Another day for searching...");
+    }
+
+    public virtual void OnSleep(Activity oldState)
+    {
+        Say("Time for sleep!");
     }
 } 
