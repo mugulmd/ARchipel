@@ -63,6 +63,7 @@ public class PlatformElement : GameElement
     public void TakePassenger(CharacterElement elt)
     {
         passengers.Add(elt);
+        elt.storyTags.Add("Visited " + this.name);
     }
 
     public void ReleasePassenger(CharacterElement elt)

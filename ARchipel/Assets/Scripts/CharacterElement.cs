@@ -9,7 +9,10 @@ public abstract class CharacterElement : GameElement
 
     protected Activity activity_;
 
-    
+    // a set to record characters' information, like where they have been,
+    // who they have met, what they know about the world
+    public HashSet<string> storyTags = new HashSet<string>();
+
     public Activity activity
     {
         get
@@ -20,6 +23,7 @@ public abstract class CharacterElement : GameElement
         {
             if (activity_ != value)
             {
+                Debug.Log("Set " + this.name + " to " + value);
                 Activity oldActivity_ = activity_;
                 activity_ = value;
                 this.OnStateChange(oldActivity_, activity_);
@@ -58,6 +62,11 @@ public abstract class CharacterElement : GameElement
         {
             ReachedPlatform= new UnityEvent();
         }
+    }
+
+    public void OnIslandReach()
+    {
+
     }
 
     public virtual void SetGround(PlatformElement elt, int spot_idx)

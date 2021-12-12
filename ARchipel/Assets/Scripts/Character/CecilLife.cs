@@ -17,12 +17,12 @@ public class CecilLife : CharacterElement
         SetGround(ground, spot_idx);
     }
 
-    public virtual void OnSail(Activity oldState)
+    public override void OnSail(Activity oldState)
     {
         Say("Time for treasures");
     }
 
-    public virtual void OnSleep(Activity oldState)
+    public override void OnSleep(Activity oldState)
     {
         Say("Time for dreaming treasures");
     }

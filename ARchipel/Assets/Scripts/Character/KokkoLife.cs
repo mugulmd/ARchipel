@@ -81,13 +81,23 @@ public class KokkoLife : CharacterElement
         }
     }
 
-    public virtual void OnSail(Activity oldState)
+    public override void OnSail(Activity oldState)
     {
         Say("Another day for searching...");
     }
 
-    public virtual void OnSleep(Activity oldState)
+    public override void OnSleep(Activity oldState)
     {
         Say("Time for sleep!");
+    }
+
+    public override void OnIdle(Activity oldState)
+    {
+        Say("ummm...");
+    }
+
+    public override void OnWalk(Activity oldState)
+    {
+        Say("...");
     }
 } 
