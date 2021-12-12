@@ -9,7 +9,7 @@ public abstract class CharacterElement : GameElement
     [HideInInspector]
     public Activity activity;
 
-    [HideInInspector]
+    //[HideInInspector]
     public PlatformElement ground;
     [HideInInspector]
     public int ground_spot_idx;

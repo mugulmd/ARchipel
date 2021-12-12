@@ -11,9 +11,20 @@ public class PlatformElement : GameElement
     [HideInInspector]
     public List<CharacterElement> passengers;
 
+    private bool isInitialize = false;
+
     public virtual void Init(string target_name)
     {
         base.Init(target_name);
+    }
+
+    // some gameobject init before invoking AssignSpotIdx, so we pre-initialize when we need 
+    public void InitIsland()
+    {
+        if (isInitialize)
+        {
+            return;
+        }
         List<Transform> lst_spots = new List<Transform>();
         foreach (Transform child in transform)
         {
@@ -29,10 +40,15 @@ public class PlatformElement : GameElement
             available[i] = true;
         }
         passengers = new List<CharacterElement>();
+        isInitialize = true;
     }
 
     public int AssignSpotIdx()
     {
+        if (!isInitialize)
+        {
+            InitIsland();
+        }
         for (int i = 0; i < available.Length; i++)
         {
             if (available[i])

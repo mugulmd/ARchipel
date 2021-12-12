@@ -12,10 +12,10 @@ public class KokkoLife : CharacterElement
         activity = Activity.Sleep;
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
-        IslandElement island = GameObject.Find("Island Kokko").GetComponent<IslandElement>();
-        int spot_idx = island.AssignSpotIdx();
-        island.TakePassenger(this);
-        SetGround(island, spot_idx);
+        //IslandElement island = GameObject.Find("Island Kokko").GetComponent<IslandElement>();
+        int spot_idx = ground.AssignSpotIdx();
+        ground.TakePassenger(this);
+        SetGround(ground, spot_idx);
     }
 
     void Update()
