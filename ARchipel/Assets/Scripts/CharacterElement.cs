@@ -23,7 +23,6 @@ public abstract class CharacterElement : GameElement
                 Debug.Log("Set " + this.name + " to " + value);
                 Activity oldActivity_ = activity_;
                 activity_ = value;
-                this.OnStateChange(oldActivity_, activity_);
                 StateChanged.Invoke(oldActivity_, activity_);
             }
         }
@@ -47,8 +46,6 @@ public abstract class CharacterElement : GameElement
 
     public DialogBubble dialogBubble;
 
-    protected StoryLog storyLog;
-
     // block daily speech text when the character is occupied by the story.
     public bool isOccupiedByStory = false;
 
@@ -66,11 +63,6 @@ public abstract class CharacterElement : GameElement
             ReachedPlatform= new UnityEvent();
         }
         
-    }
-
-    public void OnIslandReach()
-    {
-
     }
 
     public virtual void SetGround(PlatformElement elt, int spot_idx)
@@ -140,22 +132,14 @@ public abstract class CharacterElement : GameElement
     public void Say(string s)
     {
         this.dialogBubble.DisplayText(s);
-        if (storyLog == null)
-        {
-            storyLog = this.game_manager.GetComponent<StoryLog>();
-        }
-        storyLog.AddMessage("[" + this.name + "] " + s);
+        game_data.story_log.AddMessage("[" + this.name + "] " + s);
     }
 
     public void SayIfSpare(string s)
     {
         if (dialogBubble.DisplayTextIfSpare(s)&& !isOccupiedByStory)
         {
-            if (storyLog == null)
-            {
-                storyLog = this.game_manager.GetComponent<StoryLog>();
-            }
-            storyLog.AddMessage("[" + this.name + "] " + s);
+            game_data.story_log.AddMessage("[" + this.name + "] " + s);
         }
     }
 

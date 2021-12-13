@@ -12,7 +12,7 @@ public class StoryLog : MonoBehaviour
     private Vector2 scroll_pos;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         scroll_pos = Vector2.zero;
 
@@ -20,9 +20,14 @@ public class StoryLog : MonoBehaviour
     }
 
     // Add a new notification to the story log
+    // and remove old messages
     public void AddMessage(String msg)
     {
         messages.Add(msg);
+        while (messages.Count > 3)
+        {
+            messages.RemoveAt(0);
+        }
         scroll_pos = new Vector2(0, 100);
     }
 

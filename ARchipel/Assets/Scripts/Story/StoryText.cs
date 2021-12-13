@@ -13,7 +13,7 @@ public class StoryText: MonoBehaviour
     protected GameData game_data;
 
     public TextAsset storyFile = null;
-    private void Start()
+    private void Awake()
     {
         story = StoryFileParser.ParseStory(storyFile.text);
         GameObject g = GameObject.Find("Game Manager");

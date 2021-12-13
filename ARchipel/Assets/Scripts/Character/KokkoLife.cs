@@ -10,7 +10,7 @@ public class KokkoLife : CharacterElement
     {
         Init("Target Kokko");
         activity = Activity.Sleep;
-        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        animator = transform.Find("Astronaut").gameObject.GetComponent<Animator>();
 
         //IslandElement island = GameObject.Find("Island Kokko").GetComponent<IslandElement>();
         int spot_idx = ground.AssignSpotIdx();
@@ -28,6 +28,8 @@ public class KokkoLife : CharacterElement
             // if close enough, stop walking and set new ground
             if (Vector3.Distance(transform.position, destination.spots[dest_spot_idx].position) < 0.01F)
             {
+                activity = Activity.Idle;
+                SetGround(destination, dest_spot_idx);
                 ReachedPlatform.Invoke();
             } else
             {
@@ -61,10 +63,7 @@ public class KokkoLife : CharacterElement
         }
     }
     public void OnReachedPlatform()
-    {
-        activity = Activity.Idle;
-        SetGround(destination, dest_spot_idx);
-        
+    {   
         if (game_data.boat_ctrl.name == ground.name)
         {
             // determine an island to go to

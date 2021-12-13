@@ -10,7 +10,7 @@ public class CecilLife : CharacterElement
     void Start()
     {
         Init("Target Cecil");
-        animation = transform.GetChild(0).gameObject.GetComponent<Animation>();
+        animation = transform.Find("MushroomMon").gameObject.GetComponent<Animation>();
         animation.Play("Idle");
 
         int spot_idx = ground.AssignSpotIdx();
