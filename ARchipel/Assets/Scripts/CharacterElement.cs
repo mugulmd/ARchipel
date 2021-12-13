@@ -65,11 +65,6 @@ public abstract class CharacterElement : GameElement
         
     }
 
-    public void OnIslandReach()
-    {
-
-    }
-
     public virtual void SetGround(PlatformElement elt, int spot_idx)
     {
         ground = elt;

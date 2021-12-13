@@ -143,6 +143,21 @@ public class BoatController : PlatformElement
             island.TakePassenger(elt);
             elt.WalkTo(island, spot_idx);
         }
-        state = State.Adrift;
+    }
+    public void OnReachPlatform()
+    {
+        if (state == State.EndingTrip)
+        {
+            if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.15F)
+            {
+                at_dock = false;
+                island = null;
+                port_idx = -1;
+                transform.position = marker.transform.position;
+                transform.SetParent(marker.transform);
+                transform.position += Vector3.up * 0.1F;
+                state = State.Adrift;
+            }
+        }
     }
 }
