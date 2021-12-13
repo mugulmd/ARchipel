@@ -64,6 +64,7 @@ public class KokkoLife : CharacterElement
     {
         activity = Activity.Idle;
         SetGround(destination, dest_spot_idx);
+        
         if (game_data.boat_ctrl.name == ground.name)
         {
             // determine an island to go to
@@ -79,25 +80,29 @@ public class KokkoLife : CharacterElement
             }
             game_data.boat_ctrl.SailTo(dest_island);
         }
+        else
+        {
+            game_manager.GetComponent<StoryText>().PlayStory("Cecil_Kokko_0"); //test code
+        }
     }
 
     public override void OnSail(Activity oldState)
     {
-        Say("Another day for searching...");
+        SayIfSpare("Another day for searching...");
     }
 
     public override void OnSleep(Activity oldState)
     {
-        Say("Time for sleep!");
+        SayIfSpare("Time for sleep!");
     }
 
     public override void OnIdle(Activity oldState)
     {
-        Say("ummm...");
+        SayIfSpare("ummm...");
     }
 
     public override void OnWalk(Activity oldState)
     {
-        Say("...");
+        SayIfSpare("...");
     }
 } 

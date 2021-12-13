@@ -6,7 +6,7 @@ using UnityEngine;
 public class StoryLog : MonoBehaviour
 {
     // Log
-    private List<String> messages;
+    private List<String> messages = new List<string>();
 
     // GUI stuff
     private Vector2 scroll_pos;
@@ -14,7 +14,6 @@ public class StoryLog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        messages = new List<String>();
         scroll_pos = Vector2.zero;
 
         AddMessage("Let the story begin...");

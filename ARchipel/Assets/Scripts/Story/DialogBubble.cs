@@ -17,6 +17,32 @@ public class DialogBubble : MonoBehaviour
     private DisplayState state;
     private Coroutine displayCoroutine;
 
+
+    public bool IsPlaying
+    {
+        get
+        {
+            return state != DisplayState.Idle;
+        }
+    }
+
+    public float LeftPlayingTime
+    {
+        get
+        {
+            switch (state)
+            {
+                case DisplayState.Idle:
+                    return 0;
+                case DisplayState.Printing:
+                    return displayOneCharInterval * (currentText.Length - displayedCharsIndex)
+                        +basicKeepBeforeDisappear+currentText.Length*perCharKeepBeforeDisappear;
+                case DisplayState.Showing:
+                    return basicKeepBeforeDisappear + currentText.Length * perCharKeepBeforeDisappear;
+            }
+            return 0.0f;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +50,18 @@ public class DialogBubble : MonoBehaviour
         state = DisplayState.Idle;
     }
 
-    public void DisplayTextWhole(string s)
+    //display whole text immediately, skip current printing animation
+    public void DisplayTextWhole()
     {
-        displayedCharsIndex = s.Length;
-        textMesh.text = currentText;
-        state = DisplayState.Showing;
+        if (state == DisplayState.Printing)
+        {
+            displayedCharsIndex = currentText.Length;
+            textMesh.text = currentText;
+            state = DisplayState.Showing;
+        }
     }
 
-    //TODO: dynamically display the text
+    //Display the text, will interrupt the current text! 
     public void DisplayText(string s)
     {
         if (state != DisplayState.Idle)
@@ -44,6 +74,16 @@ public class DialogBubble : MonoBehaviour
         displayedCharsIndex = 0;
         state = DisplayState.Printing;
         displayCoroutine = StartCoroutine(DisplayCoroutine());
+    }
+
+    public bool DisplayTextIfSpare(string s)
+    {
+        if (!IsPlaying)
+        {
+            DisplayText(s);
+            return true;
+        }
+        return false;
     }
 
     IEnumerator DisplayCoroutine()
@@ -70,5 +110,11 @@ public class DialogBubble : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        //billboard, keep facing to the user
+        textMesh.transform.rotation = Camera.main.transform.rotation;
     }
 }

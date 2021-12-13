@@ -45,9 +45,12 @@ public abstract class CharacterElement : GameElement
     protected float speed;
 
     public UnityEvent ReachedPlatform;
+
     public UnityEvent<Activity,Activity> StateChanged; // <old State, current state>.
 
     public DialogBubble dialogBubble;
+
+    protected StoryLog storyLog;
 
     public virtual void Init(string target_name)
     {
@@ -62,6 +65,7 @@ public abstract class CharacterElement : GameElement
         {
             ReachedPlatform= new UnityEvent();
         }
+        
     }
 
     public void OnIslandReach()
@@ -132,8 +136,26 @@ public abstract class CharacterElement : GameElement
 
     }
 
+    // let the character say something!
     public void Say(string s)
     {
         this.dialogBubble.DisplayText(s);
+        if (storyLog == null)
+        {
+            storyLog = this.game_manager.GetComponent<StoryLog>();
+        }
+        storyLog.AddMessage("[" + this.name + "] " + s);
+    }
+
+    public void SayIfSpare(string s)
+    {
+        if (dialogBubble.DisplayTextIfSpare(s))
+        {
+            if (storyLog == null)
+            {
+                storyLog = this.game_manager.GetComponent<StoryLog>();
+            }
+            storyLog.AddMessage("[" + this.name + "] " + s);
+        }
     }
 }

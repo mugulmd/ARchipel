@@ -19,11 +19,11 @@ public class CecilLife : CharacterElement
 
     public override void OnSail(Activity oldState)
     {
-        Say("Time for treasures");
+        SayIfSpare("Time for treasures");
     }
 
     public override void OnSleep(Activity oldState)
     {
-        Say("Time for dreaming treasures");
+        SayIfSpare("Time for dreaming treasures");
     }
 }
