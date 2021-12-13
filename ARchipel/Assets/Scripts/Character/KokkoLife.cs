@@ -82,7 +82,7 @@ public class KokkoLife : CharacterElement
         }
         else
         {
-            game_manager.GetComponent<StoryText>().PlayStory("Cecil_Kokko_0"); //test code
+            //game_manager.GetComponent<StoryText>().PlayStory("Cecil_Kokko_0"); //test code
         }
     }
 

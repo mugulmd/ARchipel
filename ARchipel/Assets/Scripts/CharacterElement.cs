@@ -9,9 +9,6 @@ public abstract class CharacterElement : GameElement
 
     protected Activity activity_;
 
-    // a set to record characters' information, like where they have been,
-    // who they have met, what they know about the world
-    public HashSet<string> storyTags = new HashSet<string>();
 
     public Activity activity
     {
@@ -51,6 +48,9 @@ public abstract class CharacterElement : GameElement
     public DialogBubble dialogBubble;
 
     protected StoryLog storyLog;
+
+    // block daily speech text when the character is occupied by the story.
+    public bool isOccupiedByStory = false;
 
     public virtual void Init(string target_name)
     {
@@ -149,7 +149,7 @@ public abstract class CharacterElement : GameElement
 
     public void SayIfSpare(string s)
     {
-        if (dialogBubble.DisplayTextIfSpare(s))
+        if (dialogBubble.DisplayTextIfSpare(s)&& !isOccupiedByStory)
         {
             if (storyLog == null)
             {
@@ -157,5 +157,10 @@ public abstract class CharacterElement : GameElement
             }
             storyLog.AddMessage("[" + this.name + "] " + s);
         }
+    }
+
+    public bool IsOnThePlatform(string s)
+    {
+        return this.ground.name == s;
     }
 }

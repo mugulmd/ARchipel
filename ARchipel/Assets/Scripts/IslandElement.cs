@@ -7,8 +7,16 @@ public abstract class IslandElement : PlatformElement
     [HideInInspector]
     public Transform[] ports;
 
-    [HideInInspector]
-    public bool has_boat;
+    //[HideInInspector]
+    public bool has_boat
+    {
+        get
+        {
+            return game_data.boat_ctrl.island.name == name;
+        }
+    }
+
+    
 
     protected virtual void Init(string target_name)
     {
@@ -22,16 +30,16 @@ public abstract class IslandElement : PlatformElement
             }
         }
         ports = lst_ports.ToArray();
-        has_boat = false;
+        //has_boat = false;
     }
 
     public virtual void OnBoatReachIsland()
     {
         // check if island is this one
         // if yes, update data
-        if (game_data.boat_ctrl.island.name == name)
-        {
-            has_boat = true;
-        }
+        //if (game_data.boat_ctrl.island.name == name)
+        //{
+            //has_boat = true;
+        //}
     }
 }
