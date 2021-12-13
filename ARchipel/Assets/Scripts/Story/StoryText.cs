@@ -13,7 +13,7 @@ public class StoryText: MonoBehaviour
     public Dictionary<string, Coroutine> currentConversation = new Dictionary<string, Coroutine>();
 
     public TextAsset storyFile = null;
-    private void Start()
+    private void Awake()
     {
         story = StoryFileParser.ParseStory(storyFile.text);
         /*

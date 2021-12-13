@@ -22,8 +22,7 @@ public class TimeController : MonoBehaviour
     public UnityEvent DayStart;
     public UnityEvent NightStart;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         speed = 2000;
         time = 0;

@@ -26,7 +26,6 @@ public abstract class CharacterElement : GameElement
                 Debug.Log("Set " + this.name + " to " + value);
                 Activity oldActivity_ = activity_;
                 activity_ = value;
-                this.OnStateChange(oldActivity_, activity_);
                 StateChanged.Invoke(oldActivity_, activity_);
             }
         }
@@ -49,8 +48,6 @@ public abstract class CharacterElement : GameElement
     public UnityEvent<Activity,Activity> StateChanged; // <old State, current state>.
 
     public DialogBubble dialogBubble;
-
-    protected StoryLog storyLog;
 
     public virtual void Init(string target_name)
     {
@@ -140,22 +137,14 @@ public abstract class CharacterElement : GameElement
     public void Say(string s)
     {
         this.dialogBubble.DisplayText(s);
-        if (storyLog == null)
-        {
-            storyLog = this.game_manager.GetComponent<StoryLog>();
-        }
-        storyLog.AddMessage("[" + this.name + "] " + s);
+        game_data.story_log.AddMessage("[" + this.name + "] " + s);
     }
 
     public void SayIfSpare(string s)
     {
         if (dialogBubble.DisplayTextIfSpare(s))
         {
-            if (storyLog == null)
-            {
-                storyLog = this.game_manager.GetComponent<StoryLog>();
-            }
-            storyLog.AddMessage("[" + this.name + "] " + s);
+            game_data.story_log.AddMessage("[" + this.name + "] " + s);
         }
     }
 }

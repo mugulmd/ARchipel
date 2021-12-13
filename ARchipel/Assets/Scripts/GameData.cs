@@ -21,7 +21,7 @@ public class GameData : MonoBehaviour
     [HideInInspector]
     public CharacterElement[] characters;
 
-    void Start()
+    void Awake()
     {
         time_ctrl = GetComponent<TimeController>();
         story_log = GetComponent<StoryLog>();

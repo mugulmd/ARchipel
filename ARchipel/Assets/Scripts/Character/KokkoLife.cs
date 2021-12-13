@@ -10,7 +10,7 @@ public class KokkoLife : CharacterElement
     {
         Init("Target Kokko");
         activity = Activity.Sleep;
-        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        animator = transform.Find("Astronaut").gameObject.GetComponent<Animator>();
 
         //IslandElement island = GameObject.Find("Island Kokko").GetComponent<IslandElement>();
         int spot_idx = ground.AssignSpotIdx();

@@ -12,7 +12,7 @@ public class StoryLog : MonoBehaviour
     private Vector2 scroll_pos;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         scroll_pos = Vector2.zero;
 
