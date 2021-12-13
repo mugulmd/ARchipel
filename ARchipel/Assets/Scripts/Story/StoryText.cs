@@ -71,6 +71,7 @@ public class StoryText: MonoBehaviour
                     // for future use
                     break;
             }
+            //break;// test code, uncomment this if you think the conversation is too long
         }
     }
 

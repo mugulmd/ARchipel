@@ -137,9 +137,12 @@ public abstract class CharacterElement : GameElement
 
     public void SayIfSpare(string s)
     {
-        if (dialogBubble.DisplayTextIfSpare(s)&& !isOccupiedByStory)
+        if (!isOccupiedByStory)
         {
-            game_data.story_log.AddMessage("[" + this.name + "] " + s);
+            if (dialogBubble.DisplayTextIfSpare(s))
+            {
+                game_data.story_log.AddMessage("[" + this.name + "] " + s);
+            }
         }
     }
 

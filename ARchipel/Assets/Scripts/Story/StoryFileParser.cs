@@ -38,7 +38,7 @@ public class StoryFileParser
                         Conversation conversation = result[currentBlockName];
                         int endTokenIndex = curLine.IndexOf(']');
                         string characterName = curLine.Substring(1, endTokenIndex - 1);
-                        conversation.AddSpeek(characterName, curLine.Substring(endTokenIndex));
+                        conversation.AddSpeek(characterName, curLine.Substring(endTokenIndex + 1));
                         bool flag = true;
                         while (lineIndex < lines.Length-1 && flag)
                         {
