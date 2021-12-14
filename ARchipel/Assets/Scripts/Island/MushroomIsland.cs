@@ -6,6 +6,6 @@ public class MushroomIsland : IslandElement
 {
     void Start()
     {
-        Init("Target Cecil");
+        Init();
     }
 }

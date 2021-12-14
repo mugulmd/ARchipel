@@ -6,6 +6,6 @@ public class FrogIsland : IslandElement
 {
     void Start()
     {
-        Init("Target Kokko");
+        Init();
     }
 }

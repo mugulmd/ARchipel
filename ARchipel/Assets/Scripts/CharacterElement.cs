@@ -28,7 +28,6 @@ public abstract class CharacterElement : GameElement
         }
     }
 
-    //[HideInInspector]
     public PlatformElement ground;
     [HideInInspector]
     public int ground_spot_idx;
@@ -49,9 +48,9 @@ public abstract class CharacterElement : GameElement
     // block daily speech text when the character is occupied by the story.
     public bool isOccupiedByStory = false;
 
-    public virtual void Init(string target_name)
+    public virtual void Init()
     {
-        base.Init(target_name);
+        base.Init();
         if (dialogBubble == null)
         {
             this.dialogBubble = gameObject.GetComponent<DialogBubble>();
@@ -125,7 +124,7 @@ public abstract class CharacterElement : GameElement
 
     public virtual void OnWalk(Activity oldState)
     {
-
+        
     }
 
     // let the character say something!

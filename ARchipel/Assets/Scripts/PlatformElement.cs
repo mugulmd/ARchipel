@@ -13,11 +13,6 @@ public class PlatformElement : GameElement
 
     private bool isInitialize = false;
 
-    public virtual void Init(string target_name)
-    {
-        base.Init(target_name);
-    }
-
     // some gameobject init before invoking AssignSpotIdx, so we pre-initialize when we need 
     public void InitIsland()
     {

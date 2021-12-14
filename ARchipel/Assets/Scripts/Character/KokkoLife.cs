@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class KokkoLife : CharacterElement
 {
-    private Animator animator;
+    public Animator animator;
 
     void Start()
     {
-        Init("Target Kokko");
-        activity = Activity.Sleep;
-        animator = transform.Find("Astronaut").gameObject.GetComponent<Animator>();
+        Init();
 
-        //IslandElement island = GameObject.Find("Island Kokko").GetComponent<IslandElement>();
         int spot_idx = ground.AssignSpotIdx();
         ground.TakePassenger(this);
         SetGround(ground, spot_idx);
@@ -63,7 +60,8 @@ public class KokkoLife : CharacterElement
         }
     }
     public void OnReachedPlatform()
-    {   
+    {
+        animator.SetBool("isMoving", false);
         if (game_data.boat_ctrl.name == ground.name)
         {
             // determine an island to go to
@@ -103,5 +101,6 @@ public class KokkoLife : CharacterElement
     public override void OnWalk(Activity oldState)
     {
         SayIfSpare("...");
+        animator.SetBool("isMoving", true);
     }
 } 

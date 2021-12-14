@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class CecilLife : CharacterElement
 {
-    private Animation animation;
+    public Animation animation;
 
     void Start()
     {
-        Init("Target Cecil");
-        animation = transform.Find("MushroomMon").gameObject.GetComponent<Animation>();
+        Init();
         animation.Play("Idle");
 
         int spot_idx = ground.AssignSpotIdx();

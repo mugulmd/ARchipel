@@ -18,9 +18,9 @@ public abstract class IslandElement : PlatformElement
 
     
 
-    protected virtual void Init(string target_name)
+    protected virtual void Init()
     {
-        base.Init(target_name);
+        base.Init();
         List<Transform> lst_ports = new List<Transform>();
         foreach (Transform child in transform)
         {

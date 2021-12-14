@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EstelleLife : MonoBehaviour
+public class EstelleLife : CharacterElement
 {
-    // Start is called before the first frame update
+    public Animator animator;
+
     void Start()
     {
-        
+        Init();
+
+        int spot_idx = ground.AssignSpotIdx();
+        ground.TakePassenger(this);
+        SetGround(ground, spot_idx);
+
+        Say("Finding...");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // TODO
     }
 }

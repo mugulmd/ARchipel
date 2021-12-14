@@ -23,7 +23,7 @@ public class BoatController : PlatformElement
 
     void Start()
     {
-        Init("Target Boat");
+        Init();
         at_dock = false;
         island = null;
         port_idx = -1;

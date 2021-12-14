@@ -8,6 +8,7 @@ TagManager:
   - Character
   - Port
   - Spot
+  - Marker
   layers:
   - Default
   - TransparentFX
