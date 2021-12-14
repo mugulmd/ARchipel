@@ -11,6 +11,9 @@ public class GameData : MonoBehaviour
     public StoryLog story_log;
 
     [HideInInspector]
+    public DecisionController decision_ctrl;
+
+    [HideInInspector]
     public GameObject boat;
     [HideInInspector]
     public BoatController boat_ctrl;
@@ -30,8 +33,10 @@ public class GameData : MonoBehaviour
     {
         time_ctrl = GetComponent<TimeController>();
         story_log = GetComponent<StoryLog>();
+        decision_ctrl = GameObject.Find("DecisionPannel").GetComponent<DecisionController>();
         boat = GameObject.Find("Boat");
         boat_ctrl = boat.GetComponent<BoatController>();
+
         characterDict = new Dictionary<string, CharacterElement>();
         islandDict = new Dictionary<string, IslandElement>();
 
