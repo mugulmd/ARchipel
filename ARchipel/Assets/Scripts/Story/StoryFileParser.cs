@@ -71,14 +71,10 @@ public class StoryFileParser
                             }
                         }
                         break;
-                    case '{':
+                    case '*':
                         conversation = result[currentBlockName];
-                        endTokenIndex = curLine.IndexOf('}');
-                        string question = curLine.Substring(1, endTokenIndex - 1);
-                        int sepTokenIndex = curLine.IndexOf('/');
-                        string block_yes = curLine.Substring(endTokenIndex + 1, sepTokenIndex - endTokenIndex - 1);
-                        string block_no = curLine.Substring(sepTokenIndex + 1, curLine.Length - sepTokenIndex - 1);
-                        conversation.AddDecision(question, block_yes, block_no);
+                        string question = curLine.Substring(1).TrimStart();
+                        conversation.AddDecision(question);
                         break;
                     default:
                         break;

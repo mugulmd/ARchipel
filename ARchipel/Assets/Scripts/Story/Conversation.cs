@@ -31,8 +31,6 @@ public class Conversation
         public string content;
     }
 
-    public string conversation_yes, conversation_no;
-
     public void AddCommand(string name, CommandType commandType, string content)
     {
         contents.Add(new Command(name, commandType, content));
@@ -43,11 +41,9 @@ public class Conversation
         contents.Add(new Command(name, CommandType.Speek, content));
     }
 
-    public void AddDecision(string content, string conv_yes, string conv_no)
+    public void AddDecision(string content)
     {
         contents.Add(new Command("decision", CommandType.Decision, content));
-        conversation_yes = conv_yes;
-        conversation_no = conv_no;
     }
 
     public void AddExecuteFunction(string name, string content)
