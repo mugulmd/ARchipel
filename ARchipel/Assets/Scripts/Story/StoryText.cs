@@ -70,6 +70,13 @@ public class StoryText: MonoBehaviour
                 case Conversation.CommandType.Decision:
                     game_data.decision_ctrl.AskUser(command.content);
                     yield return new WaitUntil(() => game_data.decision_ctrl.decision_taken);
+                    if (game_data.decision_ctrl.chose_yes)
+                    {
+                        yield return PlayStoryOnCoroutine(c.conversation_yes);
+                    } else
+                    {
+                        yield return PlayStoryOnCoroutine(c.conversation_no);
+                    }
                 break;
                 case Conversation.CommandType.ExecuteFunction:
                     // for future use

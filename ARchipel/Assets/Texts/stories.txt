@@ -250,4 +250,10 @@
 [Estelle] I think you can have contact with water, 
 	They must have mistaken something.
 [Cecil]  Err...god, but I think it will kill me, I'm not sure I want to risk this
-*Should Cecil overcome his fear ?
+{Should Cecil overcome his fear ?}Estelle_Cecil_Aquaphobia_Overcome/Estelle_Cecil_Aquaphobia_Fear
+
+@Estelle_Cecil_Aquaphobia_Overcome
+[Cecil] Ok let's give it a try
+
+@Estelle_Cecil_Aquaphobia_Fear
+[Cecil] No way Jose

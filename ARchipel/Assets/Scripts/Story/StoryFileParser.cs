@@ -52,6 +52,10 @@ public class StoryFileParser
                             }
                             switch (curLine2[0])
                             {
+                                case '{':
+                                    flag = false;
+                                    lineIndex--;
+                                    break;
                                 case '#':
                                     //comment, ignore
                                     break;
@@ -71,10 +75,14 @@ public class StoryFileParser
                             }
                         }
                         break;
-                    case '*':
+                    case '{':
                         conversation = result[currentBlockName];
-                        string question = curLine.Substring(1).TrimStart();
-                        conversation.AddDecision(question);
+                        endTokenIndex = curLine.IndexOf('}');
+                        string question = curLine.Substring(1, endTokenIndex - 1);
+                        int sepTokenIndex = curLine.IndexOf('/');
+                        string conv_yes = curLine.Substring(endTokenIndex + 1, sepTokenIndex - endTokenIndex - 1);
+                        string conv_no = curLine.Substring(sepTokenIndex + 1);
+                        conversation.AddDecision(question, conv_yes, conv_no);
                         break;
                     default:
                         break;
