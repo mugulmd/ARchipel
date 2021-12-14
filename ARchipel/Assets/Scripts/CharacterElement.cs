@@ -149,4 +149,18 @@ public abstract class CharacterElement : GameElement
     {
         return this.ground.name == s;
     }
+
+    public void LookAt(GameObject gameObject)
+    {
+        LookAtUtility comp = GetComponent<LookAtUtility>();
+        if (comp != null)
+        {
+            comp.SetLookAtObject(gameObject);
+        }
+        else
+        {
+
+        }
+        
+    }
 }

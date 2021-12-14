@@ -10,7 +10,7 @@ public class DialogBubble : MonoBehaviour
     public float displayOneCharInterval = 0.12f; // play interval for the printing animation
     public float perCharKeepBeforeDisappear = 0.08f; // extra keep time according to the string length
     public float basicKeepBeforeDisappear = 3.0f; // basic keep time
-
+    public Color backgroundColor = Color.white;
     private string currentText = "";
     private int displayedCharsIndex = 0;
     enum DisplayState {Idle, Printing, Showing}
@@ -56,7 +56,7 @@ public class DialogBubble : MonoBehaviour
         if (state == DisplayState.Printing)
         {
             displayedCharsIndex = currentText.Length;
-            textMesh.text = currentText;
+            SetText(currentText);
             state = DisplayState.Showing;
         }
     }
@@ -90,7 +90,7 @@ public class DialogBubble : MonoBehaviour
     {
         while(state == DisplayState.Printing)
         {
-            textMesh.text = currentText.Substring(0, displayedCharsIndex);
+            SetText(currentText.Substring(0, displayedCharsIndex));
             displayedCharsIndex++;
             if (displayedCharsIndex >= currentText.Length)
             {
@@ -106,6 +106,10 @@ public class DialogBubble : MonoBehaviour
         yield break;
     }
 
+    void SetText(string s)
+    {
+        textMesh.text = "<mark=#" + ColorUtility.ToHtmlStringRGBA(backgroundColor) + " padding=5,5,5,5>" + s + "</mark>";
+    }
     // Update is called once per frame
     void Update()
     {

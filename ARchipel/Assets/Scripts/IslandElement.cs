@@ -12,7 +12,7 @@ public abstract class IslandElement : PlatformElement
     {
         get
         {
-            return game_data.boat_ctrl.island.name == name;
+            return game_data.boat_ctrl.island !=null && game_data.boat_ctrl.island.name == name;
         }
     }
 

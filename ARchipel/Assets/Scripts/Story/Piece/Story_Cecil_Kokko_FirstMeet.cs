@@ -31,9 +31,13 @@ class Story_Cecil_Kokko_FirstMeet : StoryPiece
     {
         cecil.isOccupiedByStory = true;
         kokko.isOccupiedByStory = true;
+        kokko.LookAt(cecil.gameObject);
+        cecil.LookAt(kokko.gameObject);
         yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_0");
         yield return new WaitUntil(() => cecilIsland.has_boat);
         yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_1");
+        cecil.storyTags.Add("Meet Kokko");
+        kokko.storyTags.Add("Meet Cecil");
         cecil.isOccupiedByStory = false;
         kokko.isOccupiedByStory = false;
     }
