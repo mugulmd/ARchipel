@@ -17,26 +17,27 @@ public class DecisionController : MonoBehaviour
     {
         decision_taken = false;
         chose_yes = false;
+        gameObject.SetActive(false);
     }
 
     public void AskUser(string s)
     {
         question.text = s;
         decision_taken = false;
-        enabled = true;
+        gameObject.SetActive(true);
     }
 
     public void OnClickYes()
     {
         chose_yes = true;
         decision_taken = true;
-        enabled = false;
+        gameObject.SetActive(false);
     }
 
     public void OnClickNo()
     {
         chose_yes = false;
         decision_taken = true;
-        enabled = false;
+        gameObject.SetActive(false);
     }
 }
