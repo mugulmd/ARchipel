@@ -13,6 +13,7 @@ public class Conversation
     {
         NoOperation=0,
         Speek,
+        Decision, 
         ExecuteFunction // reflect to invoke the function
     }
 
@@ -30,6 +31,8 @@ public class Conversation
         public string content;
     }
 
+    public string conversation_yes, conversation_no;
+
     public void AddCommand(string name, CommandType commandType, string content)
     {
         contents.Add(new Command(name, commandType, content));
@@ -38,6 +41,13 @@ public class Conversation
     public void AddSpeek(string name, string content)
     {
         contents.Add(new Command(name, CommandType.Speek, content));
+    }
+
+    public void AddDecision(string content, string conv_yes, string conv_no)
+    {
+        contents.Add(new Command("decision", CommandType.Decision, content));
+        conversation_yes = conv_yes;
+        conversation_no = conv_no;
     }
 
     public void AddExecuteFunction(string name, string content)

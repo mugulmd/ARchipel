@@ -67,6 +67,9 @@ public class StoryText: MonoBehaviour
                     characterElement.Say(command.content);
                     yield return new WaitUntil(() => !characterElement.dialogBubble.IsPlaying);
                 break;
+                case Conversation.CommandType.Decision:
+                    // TODO
+                    break;
                 case Conversation.CommandType.ExecuteFunction:
                     // for future use
                     break;

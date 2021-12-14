@@ -64,6 +64,7 @@ public class KokkoLife : CharacterElement
         animator.SetBool("isMoving", false);
         if (game_data.boat_ctrl.name == ground.name)
         {
+            // Kokko just reached a spot on boat
             // determine an island to go to
             // start sailing
             IslandElement dest_island = null;
@@ -76,10 +77,6 @@ public class KokkoLife : CharacterElement
                 }
             }
             game_data.boat_ctrl.SailTo(dest_island);
-        }
-        else
-        {
-            //game_manager.GetComponent<StoryText>().PlayStory("Cecil_Kokko_0"); //test code
         }
     }
 

@@ -22,6 +22,8 @@ public class StoryFileParser
         while (lineIndex < lines.Length)
         {
             string curLine = lines[lineIndex].Trim();
+            Conversation conversation;
+            int endTokenIndex;
             if (curLine.Length > 0)
             {
                 switch (curLine[0])
@@ -35,8 +37,8 @@ public class StoryFileParser
                         break;
                     case '[':
                         //character begin
-                        Conversation conversation = result[currentBlockName];
-                        int endTokenIndex = curLine.IndexOf(']');
+                        conversation = result[currentBlockName];
+                        endTokenIndex = curLine.IndexOf(']');
                         string characterName = curLine.Substring(1, endTokenIndex - 1);
                         conversation.AddSpeek(characterName, curLine.Substring(endTokenIndex + 1));
                         bool flag = true;
@@ -69,8 +71,14 @@ public class StoryFileParser
                             }
                         }
                         break;
-                    case '*':
-                        // not implemented
+                    case '{':
+                        conversation = result[currentBlockName];
+                        endTokenIndex = curLine.IndexOf('}');
+                        string question = curLine.Substring(1, endTokenIndex - 1);
+                        int sepTokenIndex = curLine.IndexOf('/');
+                        string block_yes = curLine.Substring(endTokenIndex + 1, sepTokenIndex - endTokenIndex - 1);
+                        string block_no = curLine.Substring(sepTokenIndex + 1, curLine.Length - sepTokenIndex - 1);
+                        conversation.AddDecision(question, block_yes, block_no);
                         break;
                     default:
                         break;

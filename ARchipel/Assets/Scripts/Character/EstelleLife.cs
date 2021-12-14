@@ -13,8 +13,6 @@ public class EstelleLife : CharacterElement
         int spot_idx = ground.AssignSpotIdx();
         ground.TakePassenger(this);
         SetGround(ground, spot_idx);
-
-        Say("Finding...");
     }
 
     void Update()

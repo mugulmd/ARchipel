@@ -243,3 +243,17 @@
 	I think I know where we might start. 
 	Let’s go to the altar island and dig into this mystery.
 
+#test
+@Estelle_Cecil_Aquaphobia
+[Estelle] Are you really allergic to water?
+[Cecil] .... Maybe, someone told me that.
+[Estelle] I think you can have contact with water, 
+	They must have mistaken something.
+[Cecil]  Err...god, but I think it will kill me, I'm not sure I want to risk this
+{Should Cecil overcome his fear ?}Estelle_Cecil_Aquaphobia_Yes/Estelle_Cecil_Aquaphobia_No
+
+@Estelle_Cecil_Aquaphobia_Yes
+[Cecil] Ok I'll give it a try
+
+@Estelle_Cecil_Aquaphobia_No
+[Cecil] No way Jose
