@@ -67,16 +67,14 @@ public class KokkoLife : CharacterElement
             // Kokko just reached a spot on boat
             // determine an island to go to
             // start sailing
-            IslandElement dest_island = null;
-            foreach (IslandElement elt in game_data.islands)
+            if (game_data.boat_ctrl.island.name == "Island Kokko")
             {
-                if (elt.name != game_data.boat_ctrl.island.name)
-                {
-                    dest_island = elt;
-                    break;
-                }
+                game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
             }
-            game_data.boat_ctrl.SailTo(dest_island);
+            else if (game_data.boat_ctrl.island.name == "Island Cecil")
+            {
+                game_data.boat_ctrl.SailTo(game_data.islandDict["Island Kokko"]);
+            }
         }
     }
 
