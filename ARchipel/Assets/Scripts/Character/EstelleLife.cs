@@ -59,7 +59,7 @@ public class EstelleLife : CharacterElement
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
             }
-            else if (game_data.boat_ctrl.island.name == "Island Cecil")
+            else
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Estelle"]);
             }

@@ -16,7 +16,8 @@ public abstract class IslandElement : PlatformElement
         }
     }
 
-    
+    [HideInInspector]
+    public bool exists;
 
     protected virtual void Init()
     {
@@ -31,6 +32,7 @@ public abstract class IslandElement : PlatformElement
         }
         ports = lst_ports.ToArray();
         //has_boat = false;
+        exists = false;
     }
 
     public virtual void OnBoatReachIsland()
@@ -41,5 +43,15 @@ public abstract class IslandElement : PlatformElement
         //{
             //has_boat = true;
         //}
+    }
+
+    public void OnMarkerFound()
+    {
+        exists = true;
+    }
+
+    public void OnMarkerLost()
+    {
+        exists = false;
     }
 }

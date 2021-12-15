@@ -16,6 +16,8 @@ public class BoatController : PlatformElement
     [HideInInspector]
     public State state;
 
+    private int n_passengers_waiting;
+    private bool destination_set;
     private IslandElement destination;
     private float speed;
 
@@ -28,6 +30,8 @@ public class BoatController : PlatformElement
         island = null;
         port_idx = -1;
         state = State.Adrift;
+        n_passengers_waiting = 0;
+        destination_set = false;
         destination = null;
         speed = 0.05F;
         if (ReachedIsland == null)
@@ -48,7 +52,7 @@ public class BoatController : PlatformElement
             // update data and trigger reached island event
             if (at_dock)
             {
-                if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.15F)
+                if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.2F)
                 {
                     at_dock = false;
                     island = null;
@@ -58,7 +62,7 @@ public class BoatController : PlatformElement
             {
                 foreach (IslandElement elt in game_data.islands)
                 {
-                    if (Vector3.Distance(marker.transform.position, elt.marker.transform.position) < 0.1F)
+                    if (Vector3.Distance(marker.transform.position, elt.marker.transform.position) < 0.15F)
                     {
                         at_dock = true;
                         island = elt;
@@ -76,6 +80,17 @@ public class BoatController : PlatformElement
                         break;
                     }
                 }
+            }
+        }
+        else if (state == State.PreparingTrip)
+        {
+            // check if all passengers are on board
+            // and if destination is set
+            // and if destination exists
+            // if yes then update state
+            if (passengers.Count == n_passengers_waiting && destination_set && destination.exists)
+            {
+                state = State.OnTrip;
             }
         }
         else if (state == State.OnTrip)
@@ -114,18 +129,24 @@ public class BoatController : PlatformElement
     {
         state = State.PreparingTrip;
         transform.SetParent(island.ports[port_idx]);
+        n_passengers_waiting++;
     }
     public void SailTo(IslandElement elt)
     {
         transform.SetParent(null);
+        destination_set = true;
         destination = elt;
         at_dock = false;
         island = null;
         port_idx = -1;
-        state = State.OnTrip;
     }
     public void OnReachedIsland()
     {
+        if (state == State.Adrift)
+        {
+            n_passengers_waiting = 0;
+            destination_set = false;
+        }
         if (state == State.OnTrip)
         {
             destination = null;
@@ -148,7 +169,7 @@ public class BoatController : PlatformElement
     {
         if (state == State.EndingTrip)
         {
-            if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.15F)
+            if (Vector3.Distance(marker.transform.position, island.marker.transform.position) > 0.2F)
             {
                 at_dock = false;
                 island = null;
