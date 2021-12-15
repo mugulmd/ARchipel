@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Story_Cecil_Kokko_FirstMeet : StoryPiece
+public class Story_Cecil_Kokko_Adventure : StoryPiece
 {
     public CecilLife cecil;
     public KokkoLife kokko;
@@ -19,10 +19,10 @@ public class Story_Cecil_Kokko_FirstMeet : StoryPiece
     }
     protected override bool JudgeCondition()
     {
-        return kokko.IsOnThePlatform("Island Cecil")
-            && cecil.IsOnThePlatform("Island Cecil")
-            && !kokko.HasStoryTag("Meet Cecil")
-            && !cecil.HasStoryTag("Meet Kokko");
+        return kokko.ground.name == cecil.ground.name
+            && kokko.HasStoryTag("Meet Cecil")
+            && cecil.HasStoryTag("Meet Kokko")
+            && cecil.HasStoryTag("No Aquaphobia");
     }
 
     protected override IEnumerator PlayContent()
@@ -31,13 +31,7 @@ public class Story_Cecil_Kokko_FirstMeet : StoryPiece
         kokko.isOccupiedByStory = true;
         kokko.LookAt(cecil.gameObject);
         cecil.LookAt(kokko.gameObject);
-        cecil.storyTags.Add("Meet Kokko");
-        kokko.storyTags.Add("Meet Cecil");
-        yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_FirstMeet");
-        if (game_data.decision_ctrl.chose_yes)
-        {
-            kokko.AddStoryTag("Know about floating island");
-        }
+        yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_Adventure");
         cecil.isOccupiedByStory = false;
         kokko.isOccupiedByStory = false;
     }

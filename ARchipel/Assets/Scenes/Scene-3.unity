@@ -2680,6 +2680,7 @@ GameObject:
   - component: {fileID: 842996196}
   - component: {fileID: 842996195}
   - component: {fileID: 842996197}
+  - component: {fileID: 842996198}
   m_Layer: 0
   m_Name: Story Pieces
   m_TagString: Untagged
@@ -2732,6 +2733,22 @@ MonoBehaviour:
   storyName: Cecil_Kokko_FirstMeet
   playOnceOnly: 1
   cecil: {fileID: 913670765}
+  kokko: {fileID: 1104007675}
+--- !u!114 &842996198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842996194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c93439592e07324ca71a5243bd905bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyName: Estelle_Kokko_Talk
+  playOnceOnly: 1
+  estelle: {fileID: 368920104}
   kokko: {fileID: 1104007675}
 --- !u!1 &866835965
 GameObject:

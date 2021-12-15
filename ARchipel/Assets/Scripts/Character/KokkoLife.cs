@@ -69,13 +69,15 @@ public class KokkoLife : CharacterElement
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Floating Island"]);
             }
-            else if (game_data.boat_ctrl.island.name == "Island Kokko")
-            {
-                game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
-            }
-            else if (game_data.boat_ctrl.island.name == "Island Cecil")
+            else if (game_data.boat_ctrl.island.name != "Island Kokko")
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Kokko"]);
+            }
+            else
+            {
+                float r = Random.Range(0.0F, 1.0F);
+                if (r < 0.5F) game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
+                else game_data.boat_ctrl.SailTo(game_data.islandDict["Island Estelle"]);
             }
         } 
         else if (ground.name == "Floating Island")

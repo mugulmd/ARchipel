@@ -52,20 +52,7 @@ public class CecilLife : CharacterElement
     }
     public void OnReachedPlatform()
     {
-        if (ground.name == game_data.boat_ctrl.name)
-        {
-            // Cecil just reached a spot on boat
-            // determine an island to go to
-            // start sailing
-            if (game_data.boat_ctrl.island.name == "Island Estelle")
-            {
-                game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
-            }
-            else if (game_data.boat_ctrl.island.name == "Island Cecil")
-            {
-                game_data.boat_ctrl.SailTo(game_data.islandDict["Island Estelle"]);
-            }
-        }
+        
     }
 
     public override void OnIdle(Activity oldState)
