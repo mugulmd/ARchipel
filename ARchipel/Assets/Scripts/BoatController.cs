@@ -133,6 +133,7 @@ public class BoatController : PlatformElement
     }
     public void SailTo(IslandElement elt)
     {
+        game_data.story_log.AddMessage("Let's sail to " + elt.name);
         transform.SetParent(null);
         destination_set = true;
         destination = elt;
@@ -144,6 +145,7 @@ public class BoatController : PlatformElement
     {
         if (state == State.Adrift)
         {
+            game_data.story_log.AddMessage("Boat reached " + island.name);
             n_passengers_waiting = 0;
             destination_set = false;
         }

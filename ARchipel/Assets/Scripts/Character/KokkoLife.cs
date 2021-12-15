@@ -48,7 +48,8 @@ public class KokkoLife : CharacterElement
     {
         // check if island is Kokko's ground
         // if so, go on an adventure
-        if (game_data.boat_ctrl.island.name == ground.name)
+        if (game_data.boat_ctrl.island.name == ground.name 
+            && game_data.boat_ctrl.state == BoatController.State.Adrift)
         {
             game_data.boat_ctrl.WaitForPassengers();
             int spot_idx = game_data.boat_ctrl.AssignSpotIdx();

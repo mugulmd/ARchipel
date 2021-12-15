@@ -14,8 +14,8 @@ public class IntroductionController : MonoBehaviour
     public void DisplayText(string s)
     {
         text.text = s;
-        displayTimeLeft = displayTimeBasic + displayTimePerChar * s.Length;
-        canvas.enabled = true;
+        displayTimeLeft = displayTimeBasic;
+        canvas.gameObject.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class IntroductionController : MonoBehaviour
             displayTimeLeft -= Time.deltaTime;
             if (displayTimeLeft <= 0)
             {
-                canvas.enabled = false;
+                canvas.gameObject.SetActive(false);
             }
         }
     }

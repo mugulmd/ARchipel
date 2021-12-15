@@ -43,14 +43,4 @@ public class StoryLog : MonoBehaviour
         GUILayout.EndScrollView();
         GUILayout.EndArea();
     }
-
-    // Automatic messages
-    public void SayHello()
-    {
-        AddMessage("Good morning everyone !");
-    }
-    public void SayBye()
-    {
-        AddMessage("Good night, see you tomorrow...");
-    }
 }

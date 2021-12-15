@@ -40,8 +40,11 @@ public class CecilLife : CharacterElement
         // check if island is Cecil's ground
         // and if Cecil is not scared of water
         // if so, go on an adventure
-        // TODO : also requires kokko to be here
-        if (game_data.boat_ctrl.island.name == ground.name && HasStoryTag("No Aquaphobia"))
+        // also requires kokko to be here
+        if (game_data.boat_ctrl.island.name == ground.name 
+            && game_data.boat_ctrl.state == BoatController.State.Adrift 
+            && HasStoryTag("No Aquaphobia") 
+            && game_data.characterDict["Kokko"].ground.name == ground.name)
         {
             game_data.boat_ctrl.WaitForPassengers();
             int spot_idx = game_data.boat_ctrl.AssignSpotIdx();
