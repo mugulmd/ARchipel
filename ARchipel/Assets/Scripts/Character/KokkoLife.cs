@@ -13,8 +13,6 @@ public class KokkoLife : CharacterElement
         int spot_idx = ground.AssignSpotIdx();
         ground.TakePassenger(this);
         SetGround(ground, spot_idx);
-
-        Say("Finding...");
     }
 
     void Update()
@@ -78,24 +76,8 @@ public class KokkoLife : CharacterElement
         }
     }
 
-    public override void OnSail(Activity oldState)
-    {
-        SayIfSpare("Another day for searching...");
-    }
-
-    public override void OnSleep(Activity oldState)
-    {
-        SayIfSpare("Time for sleep!");
-    }
-
-    public override void OnIdle(Activity oldState)
-    {
-        SayIfSpare("ummm...");
-    }
-
     public override void OnWalk(Activity oldState)
     {
-        SayIfSpare("...");
         animator.SetBool("isMoving", true);
     }
 } 

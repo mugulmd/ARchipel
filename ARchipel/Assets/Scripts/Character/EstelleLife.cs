@@ -65,4 +65,14 @@ public class EstelleLife : CharacterElement
             }
         }
     }
+
+    public override void OnIdle(Activity oldState)
+    {
+        animator.SetBool("isMoving", false);
+    }
+
+    public override void OnWalk(Activity oldState)
+    {
+        animator.SetBool("isMoving", true);
+    }
 }

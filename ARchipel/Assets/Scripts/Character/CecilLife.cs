@@ -12,7 +12,6 @@ public class CecilLife : CharacterElement
     void Start()
     {
         Init();
-        animation.Play("Idle");
         has_aquaphobia = true;
 
         int spot_idx = ground.AssignSpotIdx();
@@ -42,16 +41,6 @@ public class CecilLife : CharacterElement
     public void OvercomeAquaphobia()
     {
         has_aquaphobia = false;
-    }
-
-    public override void OnSail(Activity oldState)
-    {
-        SayIfSpare("Time for treasures");
-    }
-
-    public override void OnSleep(Activity oldState)
-    {
-        SayIfSpare("Time for dreaming treasures");
     }
 
     public void OnBoatReachIsland()
@@ -84,5 +73,15 @@ public class CecilLife : CharacterElement
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Estelle"]);
             }
         }
+    }
+
+    public override void OnIdle(Activity oldState)
+    {
+        animation.Play("Idle");
+    }
+
+    public virtual void OnWalk(Activity oldState)
+    {
+        animation.Play("Run");
     }
 }
