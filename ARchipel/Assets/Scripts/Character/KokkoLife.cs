@@ -60,12 +60,16 @@ public class KokkoLife : CharacterElement
     public void OnReachedPlatform()
     {
         animator.SetBool("isMoving", false);
-        if (game_data.boat_ctrl.name == ground.name)
+        if (ground.name == game_data.boat_ctrl.name)
         {
             // Kokko just reached a spot on boat
             // determine an island to go to
             // start sailing
-            if (game_data.boat_ctrl.island.name == "Island Kokko")
+            if (HasStoryTag("Know about floating island") && !HasStoryTag("Visited floating island"))
+            {
+                game_data.boat_ctrl.SailTo(game_data.islandDict["Floating Island"]);
+            }
+            else if (game_data.boat_ctrl.island.name == "Island Kokko")
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Cecil"]);
             }
@@ -73,6 +77,10 @@ public class KokkoLife : CharacterElement
             {
                 game_data.boat_ctrl.SailTo(game_data.islandDict["Island Kokko"]);
             }
+        } 
+        else if (ground.name == "Floating Island")
+        {
+            AddStoryTag("Visited floating island");
         }
     }
 

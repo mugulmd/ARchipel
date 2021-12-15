@@ -5,50 +5,6 @@
 # empty line should be ignored.
 # some character has multilines of 
 
-@ Estelle_Rorie_0
-[Rorie] Hello, do you know how to let the floating island float again…?
-	My island fell to the ground... and...
-[Estelle] Oh, poor girl, an ancient floating island? 
-	Could you take me there? 
-	I need to investigate first.
-
-@ Estelle_Rorie_1
-[Estelle] Emm... 
-	The floating island exhaust the mana, and fell down 
-	If we can find where can I input mana for the island,
-	The island will float again...
-[Rorie] Sorry... but I know nothing about that,
-	the island just fell off several days ago.
-
-@ Estelle_Rorie_2
-[Estelle] Wait, the emerald is shining…
-[Rorie]  Something wrong?
-[Estelle] No, the emerald has some reactions to the island!
-	It may indicate something
-
-@ Estelle_Rorie_3
-[Estelle] Oh, something is hidden here
-[Rorie]  But I cannot see anything
-[Estelle] Wait a minute….
-	....
-	........
-
-@ Estelle_Rorie_4
-[Estelle] Okay, it is an altar
-[Rorie]  I think we should put the emerald on it
-[Estelle] maybe… I think you should return to the floating island
-[Rorie]  You mean you found a solution?
-[Estelle] Yeah, but I would like to research this altar for a bit
-	I have never seen such wonderful magical things.
-	The altar supports the floating island.
-
-@ Estelle_Rorie_5
-[Estelle] well....done! fantasitic ancient altars, 
-	it deserves.
-	Maybe I can model after that, to create my own island...
-	Emmm...
-	Still need lots of resources... god
-
 @ Estelle_Cecil_0
 [Cecil]  Hello?
 [Estelle] (Err… an intelligent mushroom?) 
@@ -126,7 +82,7 @@
 [Estelle] Wow,
 [Kokko]  I have explored many islands to draw this map, I have put lots of effort in it.
 
-@ Cecil_Kokko_0
+@ Cecil_Kokko_FirstMeet
 [Cecil]  What are you doing here, you stupid green ball? 
 	Who do you think you are... 
 	coming here as if it’s your home... 
@@ -139,6 +95,9 @@
 	You don’t seem like the best company around. 
 	Look what, my son, I don’t give information for free. 
 	What are you willing to pay to know more about your ugly friends?
+{Should Kokko pay ?}Cecil_Kokko_Pay/Cecil_Kokko_Refuse
+
+@Cecil_Kokko_Pay
 [Kokko]  Eeeh, pay? 
 	I only have my boat and maps and a few jars with insects as a meal. 
 [Cecil]  Ok, ok, you’re not just ugly, but also poor. 
@@ -149,101 +108,22 @@
 	All clear? 
 	Yes, of course. 
 	Now give me those insects!
-[Kokko]  
-	Oh, ok, let me get those for you.  
+[Kokko] Oh, ok, let me get those for you.  
 	But… Wait, what do you mean by a floating island?
-
 [Cecil]  Ah, you’ll see it when you pass by. 
 	No more questions, ok? 
 
-@ Cecil_Kokko_1
+@Cecil_Kokko_Refuse
+[Kokko] Eeeh, pay ?
+	No thanks, I'll pass...
+[Cecil] Well then bye bye, and don't come back !
+
+@ Cecil_Kokko_Adventure
 [Cecil]  Let’s goooooooo! 
 	It’s time to rule the world! 
 	Get over here, you useless amphibia! 
 	Start that shipwreck immediately and let’s go!
 
-@ Rorie_Cecil_2
-[Cecil]  Khem… khem… 
-	What are you looking at, young lady? 
-	You seem very interested in the flowers of my island… 
-	Don’t you think it would be more proper to introduce yourself, 
-	before invading my space like this?
-[Rorie]  Heh? 
-	What is going on? 
-	Excuse me, but 
-	where are you, 
-	I don’t see you. 
-[Cecil]  Well right in front of you, 
-	why don’t you try looking at your feet a bit more often, 
-	you might be missing a whole show. 
-[Rorie]  Oh, oh, hello little shroom… 
-	What is your name? 
-	I am Rorie from the floating island.
-[Cecil]  Little shroom? 
-	Little shroom… 
-	how about Cecil 
-	The Great, ruler 
-	of the tropical islands??? 
-	I’d think more before speaking, if I was in your place. 
-[Rorie]  Excuse me, Cecil The Great. 
-	May I ask you for your help. 
-	Have you, 
-	by any chance, 
-	heard of the magical shrooms that grow on this island? 
-[Cecil]  E-excuse me… 
-	magic shrooms… 
-	What, what are you talking about? 
-	I.. 
-	I think you’re on the wrong island –
-	...
-	... 
-	#(Cecil started stuttering.)
-	Get out of this place, right now! 
-	You’re not welcome here! 
-	Leaveeee!
-
-@ Rorie_Kokko_0
-[Kokko]  Hey! 
-	Hey you, 
-	can you hear me? 
-	Hey...
-	where am I...??
-	can you tell me what this place is?
-#Rorie slid in Kokko’s direction and looked at him astounded.
-[Rorie]  Hello and welcome on the floating island. 
-	I am Rorie, nice to meet you. 
-	What are you seeking here?
-[Kokko]  Hi, I am Kokko and I am searching for my family. 
-	I lost them years ago, have you maybe seen any frogs around? 
-[Rorie]  Oh, well… 
-	we did have some frogs inhibiting our island. 
-	I could show you some paintings of our frog colony, if you’d like. 
-	Maybe you haven’t heard yet, but… there was a catastrophe on our island. 
-	A few days ago it fell down on the ground. 
-	We used to levitate above the ground, living a peaceful and beautiful life. 
-	Ever since this catastrophe took place, we haven’t seen our frogs.  
-	We’ve searched for them all over the island, but there is no trace of them. 
-	And we are so weak, we’ve lost our vitality. 
-	I need to help my island, 
-	I need to bring back everything back to normal. 
-	But anyways, would you like to see my paintings?
-[Kokko]  Yes! Yes! Of course, please show me!
-
-@ Rorie_Kokko_1
-[Kokko]  Rorie, let’s go together! 
-	Let’s take this boat and let’s find how to bring back your vitality 
-	and find my family! 
-	We can help each other, 
-		what do you think?
-[Rorie]  Hmm… 
-	maybe you’re right… 
-	we are both seeking, 
-	we both need to fix this all. 
-	Let’s try it, 
-	I think I know where we might start. 
-	Let’s go to the altar island and dig into this mystery.
-
-#test
 @Estelle_Cecil_Aquaphobia
 [Estelle] Are you really allergic to water?
 [Cecil] .... Maybe, someone told me that.

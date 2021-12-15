@@ -19,17 +19,24 @@ public class Story_Cecil_Estelle_Aquaphobia : StoryPiece
     }
     protected override bool JudgeCondition()
     {
-        return estelle.IsOnThePlatform("Island Cecil");
+        return estelle.IsOnThePlatform("Island Cecil")
+            && cecil.IsOnThePlatform("Island Cecil")
+            && !estelle.HasStoryTag("Meet Cecil")
+            && !cecil.HasStoryTag("Meet Estelle");
     }
 
     protected override IEnumerator PlayContent()
     {
         cecil.isOccupiedByStory = true;
         estelle.isOccupiedByStory = true;
+        cecil.LookAt(estelle.gameObject);
+        estelle.LookAt(cecil.gameObject);
+        cecil.storyTags.Add("Meet Estelle");
+        estelle.storyTags.Add("Meet Cecil");
         yield return story_text.PlayStoryOnCoroutine("Estelle_Cecil_Aquaphobia");
         if (game_data.decision_ctrl.chose_yes)
         {
-            cecil.OvercomeAquaphobia();
+            cecil.AddStoryTag("No Aquaphobia");
         }
         cecil.isOccupiedByStory = false;
         estelle.isOccupiedByStory = false;

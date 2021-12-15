@@ -8,23 +8,21 @@ using UnityEngine;
 
 class Story_Cecil_Kokko_FirstMeet : StoryPiece
 {
-    CharacterElement cecil, kokko;
-    IslandElement cecilIsland;
+    public CecilLife cecil;
+    public KokkoLife kokko;
+
     protected override void Start()
     {
         base.Start();
-        cecil = game_data.characterDict["Cecil"];
-        kokko = game_data.characterDict["Kokko"];
-        cecilIsland = game_data.islandDict["Island Cecil"];
+
         playOnceOnly = true;
     }
     protected override bool JudgeCondition()
     {
-        return
-            cecil.IsOnThePlatform("Island Cecil") &&
-            kokko.IsOnThePlatform("Island Cecil") &&
-            !cecil.HasStoryTag("Meet Kokko") &&
-            !kokko.HasStoryTag("Meet Cecil");
+        return kokko.IsOnThePlatform("Island Cecil")
+            && cecil.IsOnThePlatform("Island Cecil")
+            && !kokko.HasStoryTag("Meet Cecil")
+            && !cecil.HasStoryTag("Meet Kokko");
     }
 
     protected override IEnumerator PlayContent()
@@ -33,11 +31,13 @@ class Story_Cecil_Kokko_FirstMeet : StoryPiece
         kokko.isOccupiedByStory = true;
         kokko.LookAt(cecil.gameObject);
         cecil.LookAt(kokko.gameObject);
-        yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_0");
-        yield return new WaitUntil(() => cecilIsland.has_boat);
-        yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_1");
         cecil.storyTags.Add("Meet Kokko");
         kokko.storyTags.Add("Meet Cecil");
+        yield return story_text.PlayStoryOnCoroutine("Cecil_Kokko_FirstMeet");
+        if (game_data.decision_ctrl.chose_yes)
+        {
+            kokko.AddStoryTag("Know about floating island");
+        }
         cecil.isOccupiedByStory = false;
         kokko.isOccupiedByStory = false;
     }

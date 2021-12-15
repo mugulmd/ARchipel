@@ -50,7 +50,7 @@ public class EstelleLife : CharacterElement
     }
     public void OnReachedPlatform()
     {
-        if (game_data.boat_ctrl.name == ground.name)
+        if (ground.name == game_data.boat_ctrl.name)
         {
             // Estelle just reached a spot on boat
             // determine an island to go to

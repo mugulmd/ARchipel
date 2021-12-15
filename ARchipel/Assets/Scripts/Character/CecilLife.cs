@@ -7,12 +7,9 @@ public class CecilLife : CharacterElement
 {
     public Animation animation;
 
-    private bool has_aquaphobia;
-
     void Start()
     {
         Init();
-        has_aquaphobia = true;
 
         int spot_idx = ground.AssignSpotIdx();
         SetGround(ground, spot_idx);
@@ -38,17 +35,13 @@ public class CecilLife : CharacterElement
         }
     }
 
-    public void OvercomeAquaphobia()
-    {
-        has_aquaphobia = false;
-    }
-
     public void OnBoatReachIsland()
     {
         // check if island is Cecil's ground
         // and if Cecil is not scared of water
         // if so, go on an adventure
-        if (game_data.boat_ctrl.island.name == ground.name && !has_aquaphobia)
+        // TODO : also requires kokko to be here
+        if (game_data.boat_ctrl.island.name == ground.name && HasStoryTag("No Aquaphobia"))
         {
             game_data.boat_ctrl.WaitForPassengers();
             int spot_idx = game_data.boat_ctrl.AssignSpotIdx();
@@ -59,7 +52,7 @@ public class CecilLife : CharacterElement
     }
     public void OnReachedPlatform()
     {
-        if (game_data.boat_ctrl.name == ground.name)
+        if (ground.name == game_data.boat_ctrl.name)
         {
             // Cecil just reached a spot on boat
             // determine an island to go to
